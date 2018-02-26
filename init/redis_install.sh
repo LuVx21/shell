@@ -15,7 +15,7 @@ sudo make PREFIX=/usr/local/redis install
 
 sudo cp ../redis.conf /usr/local/redis/
 
-cd;echo "alias redisup='/usr/local/redis/redis-server redis.conf'" >> .alias
+cd;echo "alias redisup='/usr/local/redis/bin/redis-server /usr/local/redis/redis.conf'" >> .alias
 source .alias
 
 # config redis.conf
