@@ -5,6 +5,12 @@ export JRE_HOME=$JAVA_HOME/jre
 export CLASSPATH=$JAVA_HOME/lib:$JRE_HOME/lib
 export PATH=$PATH:$JAVA_HOME/bin
 
+# Python
+export PATH=$PATH:/usr/local/pyton3/bin
+
+# Redis
+export PATH=$PATH:/usr/local/redis/bin
+
 # MongoDB
 export PATH=$PATH:/usr/local/mongodb/bin
 

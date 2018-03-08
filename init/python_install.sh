@@ -2,7 +2,7 @@
 
 wget https://www.python.org/ftp/python/3.5.5/Python-3.5.5.tar.xz
 
-tar -jxvf Python-3.5.5.tar.xz
+tar -xvf Python-3.5.5.tar.xz
 cd Python-3.5.5
 ./configure --prefix=/usr/local/python3
 make && make install

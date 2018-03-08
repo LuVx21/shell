@@ -2,8 +2,8 @@
 
 # 二进制文件安装
 wget https://npm.taobao.org/mirrors/node/v8.9.3/node-v8.9.3-linux-x64.tar.xz
-tar -jxvf node-v8.9.3-linux-x64.tar.xz
-mv node-v8.9.3-linux-x64 /usr/local/nodejs
+tar -xvf node-v8.9.3-linux-x64.tar.xz -C /usr/local
+mv /usr/local/node-v8.9.3-linux-x64 /usr/local/nodejs
 
 ln -s /usr/local/nodejs/bin/node /usr/local/bin/node
 ln -s /usr/local/nodejs/bin/npm /usr/local/bin/npm
