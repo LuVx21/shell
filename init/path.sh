@@ -6,7 +6,7 @@ export CLASSPATH=$JAVA_HOME/lib:$JRE_HOME/lib
 export PATH=$PATH:$JAVA_HOME/bin
 
 # Python
-export PATH=$PATH:/usr/local/pyton3/bin
+export PATH=$PATH:/usr/local/python3/bin
 
 # Redis
 export PATH=$PATH:/usr/local/redis/bin
@@ -15,7 +15,7 @@ export PATH=$PATH:/usr/local/redis/bin
 export PATH=$PATH:/usr/local/mongodb/bin
 
 # Tomcat
-export CATALINA_HOME=/usr/local/tomcat8
+export CATALINA_HOME=/usr/local/tomcat9
 export PATH=$PATH:$CATALINA_HOME/bin
 
 # Spring

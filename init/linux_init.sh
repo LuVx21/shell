@@ -15,6 +15,16 @@ mv path.sh .path
 echo 'source ~/.alias' >> ~/.zshrc
 echo 'source ~/.path' >> ~/.zshrc
 
+
+# 开放端口
+iptables -I INPUT -p tcp --dport 8080 -j ACCEPT
+iptables save
+# 或
+# vi /etc/sysconfig/iptables
+# -A INPUT -m state –state NEW -m tcp -p tcp –dport 8080 -j ACCEPT
+
+
+# SpaceVim
 # curl -sLf https://spacevim.org/install.sh | bash
 # curl -sLf https://spacevim.org/install.sh | bash -s -- --uninstall
 
