@@ -1,3 +1,4 @@
+# alias cat=ccat
 alias .='source'
 alias e='open'
 alias q='exit'
