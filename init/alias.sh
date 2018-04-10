@@ -1,4 +1,5 @@
 # alias cat=ccat
+# alias j=autojump
 alias .='source'
 alias e='open'
 alias q='exit'

@@ -49,4 +49,5 @@ sudo yum install autojump
 sudo yum install -y tmux
 sudo yum install -y ipython
 sudo yum install -y htop
+sudo yum install -y dos2unix
 
