@@ -44,10 +44,4 @@ mv ~/.vim/molokai/colors ~/.vim
 
 
 # wget https://github.com/jingweno/ccat/releases/download/v1.1.0/linux-amd64-1.1.0.tar.gz
-sudo yum install cloc
-sudo yum install autojump
-sudo yum install -y tmux
-sudo yum install -y ipython
-sudo yum install -y htop
-sudo yum install -y dos2unix
-
+sudo yum install cloc autojump tmux htop dos2unix
