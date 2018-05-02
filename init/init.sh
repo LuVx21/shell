@@ -8,10 +8,6 @@ su - luvx
 # PermitRootLogin no
 # MaxAuthTries 3
 
-sudo yum update
-sudo yum -y install gcc gcc-c++ automake autoconf libtool make zlib-devel bzip2-devel openssl openssl-devel ncurses-devel sqlite-devel readline-devel tk-devel gdbm-devel db4-devel libpcap-devel xz-devel
-
-sudo yum install git zsh tree
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 # 引入zsh-syntax-highlighting plugin
@@ -35,13 +31,10 @@ mv ~/.vim/molokai/colors ~/.vim
 # curl -sLf https://spacevim.org/install.sh | bash
 # curl -sLf https://spacevim.org/install.sh | bash -s -- --uninstall
 
-# 开放端口
-# iptables -I INPUT -p tcp --dport 8080 -j ACCEPT
-# iptables save
-# 或
-# vi /etc/sysconfig/iptables
-# -A INPUT -m state –state NEW -m tcp -p tcp –dport 8080 -j ACCEPT
-
-
 # wget https://github.com/jingweno/ccat/releases/download/v1.1.0/linux-amd64-1.1.0.tar.gz
-sudo yum install cloc autojump tmux htop dos2unix
+
+wget http://www.rarlab.com/rar/rarlinux-3.8.0.tar.gz
+tar zxvf rarlinux-3.8.0.tar.gz
+cd rar
+make
+make install
