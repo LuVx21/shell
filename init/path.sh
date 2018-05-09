@@ -43,3 +43,11 @@ export PATH=$PATH:/usr/local/phantomjs-2.1.1/bin
 
 # NodeJS
 export PATH=$PATH:/usr/local/nodejs/bin
+
+# Hadoop
+export HADOOP_HOME=/usr/local/hadoop
+export PATH=$PATH:$HADOOP_HOME/bin
+
+# flutter
+export FLUTTER_HOME=/usr/local/flutter
+export PATH=$PATH:$FLUTTER_HOME/bin

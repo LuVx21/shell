@@ -17,6 +17,8 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType java set omnifunc=javacomplete#Complet
 
+set list
+set listchars=tab:>-,trail:-
 set nowrap "取消换行
 set number "显示行号
 set cursorline "突出显示当前行
