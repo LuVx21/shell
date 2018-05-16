@@ -33,6 +33,12 @@ mv ~/.vim/molokai/colors ~/.vim
 
 # wget https://github.com/jingweno/ccat/releases/download/v1.1.0/linux-amd64-1.1.0.tar.gz
 
+# saferm
+git clone https://github.com/lagerspetz/linux-stuff
+sudo mv linux-stuff/scripts/saferm.sh $(dirname $(which rm))
+rm -Rf linux-stuff
+echo 'alias rm=/bin/saferm.sh' >> ~/.alias
+
 wget http://www.rarlab.com/rar/rarlinux-3.8.0.tar.gz
 tar zxvf rarlinux-3.8.0.tar.gz
 cd rar
