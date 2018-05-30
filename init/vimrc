@@ -20,7 +20,8 @@ autocmd FileType java set omnifunc=javacomplete#Complet
 set list
 set listchars=tab:>-,trail:-
 set nowrap "取消换行
-set number "显示行号
+"set number "显示行号
+set relativenumber "显示相对行号
 set cursorline "突出显示当前行
 set ruler "打开状态栏标尺
 set shiftwidth=4 "设定 << 和 >> 命令移动时的宽度为 4
