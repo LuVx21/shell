@@ -12,3 +12,6 @@ alias jb='fun () { dir=$(dirname $1) && name=$(basename $1 .java) && cd $dir && 
 alias rmall='fun () { find . -type f -name $1 | xargs rm -rv {} ;};fun'
 # alias rmall='fun () { find . -type f -name $1 -delete ;};fun'
 
+# Git
+alias gdcab='git diff --cached --binary'
+

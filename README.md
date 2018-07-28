@@ -2,6 +2,7 @@
 title: shell
 date: 
 tags:
+- Linux
 - shell
 ---
 ![license](https://img.shields.io/packagist/l/doctrine/orm.svg)
