@@ -55,3 +55,7 @@ export PATH=$PATH:$FLUTTER_HOME/bin
 # RabbitMQ
 export RABBITMQ_HOME=/usr/local/rabbitmq
 export PATH=$PATH:$RABBITMQ_HOME/bin:$RABBITMQ_HOME/sbin
+
+# Kafka
+export KAFKA_HOME=/usr/local/kafka
+export PATH=$PATH:$KAFKA_HOME/bin
