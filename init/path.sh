@@ -59,3 +59,9 @@ export PATH=$PATH:$RABBITMQ_HOME/bin:$RABBITMQ_HOME/sbin
 # Kafka
 export KAFKA_HOME=/usr/local/kafka
 export PATH=$PATH:$KAFKA_HOME/bin
+
+# ZooKeeper
+export ZOOKEEPER_HOME=/usr/local/zookeeper
+export PATH=$PATH:$ZOOKEEPER_HOME/bin
+
+
