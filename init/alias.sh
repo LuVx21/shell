@@ -5,7 +5,7 @@ alias .='source'
 alias e='open'
 alias q='exit'
 
-##############################################################################
+######################################自定义######################################
 alias mysqlup='systemctl start mysqlid || service mysql start'
 alias mysqldown='systemctl stop mysqlid || service mysql stop'
 # alias redisup='redis-server /usr/local/redis/redis.conf'
@@ -13,19 +13,18 @@ alias mysqldown='systemctl stop mysqlid || service mysql stop'
 alias jb='fun () { dir=$(dirname $1) && name=$(basename $1 .java) && cd $dir && javac $(basename $1) && java $name && rm $name".class" && cd - > /dev/null;};fun'
 # alias rmall='fun () { find . -type f -name $1 | xargs rm -rv {} ;};fun'
 # alias rmall='fun () { find . -type f -name $1 -delete ;};fun'
-##############################################################################
-
+######################################Git######################################
 # Git
 alias gdcab='git diff --cached --binary'
 
-##############################################################################
+######################################Docker######################################
 # docker aliases
 alias dk=docker
 alias dkimg='dk img'
 alias dkcon='dk container'
 alias dockertls='export DOCKER_TLS="--tlsverify --tlskey=$HOME/docker/.certs/key.pem --tlscacert=$HOME/docker/.certs/ca.pem --tlscert=$HOME/docker/.certs/cert.pem"'
 alias dockertls1='export DOCKER_TLS_VERIFY=1; export DOCKER_CERT_PATH=$HOME/docker/.certs'
-alias dockerenv='docker inspect -f "{{json .Config.Env}}"'
+alias dkenv='docker inspect -f "{{json .Config.Env}}"'
 alias dklogpath='docker inspect --format="{{.LogPath}}"'
 alias dkmount='docker inspect -f "{{json .Mounts}}"'
 alias dklogsf='docker logs -f'
@@ -38,7 +37,7 @@ alias dkpsdead='docker ps -f status=dead -a'
 alias dockerrmexited='dkpsexited; docker rm -f -v $(docker ps -f status=exited -aq)'
 alias dkrmdead='dkpsdead; docker rm -f $(docker ps -f status=dead -aq)'
 alias dockerchkhealth='docker inspect -f "{{json .State.Health}}"'
-alias dockerstate='docker inspect -f "{{json .State}}"'
+alias dkst='docker inspect -f "{{json .State}}"'
 alias dockerlabels='docker inspect -f "{{json .Config.Labels}}"'
 alias dockernetmode='docker inspect -f "{{json .HostConfig.NetworkMode}}"'
 alias dockersysprune='docker system prune'
