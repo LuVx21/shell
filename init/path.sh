@@ -64,4 +64,6 @@ export PATH=$PATH:$KAFKA_HOME/bin
 export ZOOKEEPER_HOME=/usr/local/zookeeper
 export PATH=$PATH:$ZOOKEEPER_HOME/bin
 
-
+# Flink
+export FLINK_HOME=/opt/flink
+export PATH=$PATH:$FLINK_HOME/bin
