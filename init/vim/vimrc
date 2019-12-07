@@ -18,7 +18,10 @@ autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType java set omnifunc=javacomplete#Complet
 
 set list
-set listchars=tab:>-,trail:-
+set listchars=tab:→\ ,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
+"set listchars=tab:>-
+"set listchars=trail:-
+
 set nowrap "取消换行
 "set number "显示行号
 set relativenumber "显示相对行号
