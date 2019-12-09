@@ -1,6 +1,12 @@
 #! /bin/bash
 
-wget http://mirrors.hust.edu.cn/apache/maven/maven-3/3.5.2/binaries/apache-maven-3.5.2-bin.tar.gz
+version=3.5.4
+url=https://mirrors.tuna.tsinghua.edu.cn/apache/maven/maven-3/$version/binaries/apache-maven-$version-bin.tar.gz
+filename=apache-maven-$version-bin.tar.gz
+sudo wget -c $url -O $filename
 
-tar -zxvf apache-maven-3.5.2-bin.tar.gz -C /usr/local/
-mv /usr/local/apache-maven-3.5.2 /usr/local/maven
+sudo mkdir -p /opt/install
+sudo tar -zxvf $filename -C /opt/install/
+sudo ln -s /opt/install/apache-maven-$version /opt/maven
+
+sudo rm -f $filename
