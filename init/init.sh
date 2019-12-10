@@ -32,12 +32,16 @@ mv ~/.vim/molokai/colors ~/.vim
 ############################################################
 ssh-keygen -t rsa -C "yeyu0926@gmail.com"
 cat ~/.ssh/id_rsa.pub >> authorized_keys
-############################################################
+########################### vim #################################
+升级vim8
+curl -L https://copr.fedorainfracloud.org/coprs/hnakamur/vim/repo/epel-7/hnakamur-vim-epel-7.repo -o /etc/yum.repos.d/hnakamur-vim-epel-7.repo
+yum update -y vim*
 
 # SpaceVim
 # curl -sLf https://spacevim.org/install.sh | bash
 # curl -sLf https://spacevim.org/install.sh | bash -s -- --uninstall
 
+########################### ??? #################################
 # wget https://github.com/jingweno/ccat/releases/download/v1.1.0/linux-amd64-1.1.0.tar.gz
 
 ########################### saferm #################################
