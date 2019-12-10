@@ -1,69 +1,71 @@
 
+opt_home=/opt
+
 # Java
-export JAVA_HOME=/usr/local/java
+export JAVA_HOME=$opt_home/java
 export JRE_HOME=$JAVA_HOME/jre
 export CLASSPATH=$JAVA_HOME/lib:$JRE_HOME/lib
 export PATH=$PATH:$JAVA_HOME/bin
 
 # Python
-export PATH=$PATH:/usr/local/python3/bin
+# export PATH=$PATH:$opt_home/python3/bin
 
 # Redis
-export PATH=$PATH:/usr/local/redis/bin
+# export PATH=$PATH:$opt_home/redis/bin
 
 # MongoDB
-export PATH=$PATH:/usr/local/mongodb/bin
+# export PATH=$PATH:$opt_home/mongodb/bin
 
 # Tomcat
-export CATALINA_HOME=/usr/local/tomcat9
-export PATH=$PATH:$CATALINA_HOME/bin
+# export CATALINA_HOME=$opt_home/tomcat9
+# export PATH=$PATH:$CATALINA_HOME/bin
 
 # Spring
-export SPRING_HOME=/usr/local/spring-1.5.9.RELEASE
-export SPRING=$SPRING_HOME/bin
-export PATH=$SPRING:$PATH
+# export SPRING_HOME=$opt_home/spring-1.5.9.RELEASE
+# export SPRING=$SPRING_HOME/bin
+# export PATH=$SPRING:$PATH
 
 # Maven
-export M2_HOME=/usr/local/maven
-export PATH=$PATH:$M2_HOME/bin
+# export M2_HOME=$opt_home/maven
+# export PATH=$PATH:$M2_HOME/bin
 
 # Gradle
-export GRADLE_HOME=/usr/local/gradle
-export PATH=$PATH:$GRADLE_HOME/bin/
+# export GRADLE_HOME=$opt_home/gradle
+# export PATH=$PATH:$GRADLE_HOME/bin/
 
 # MySQL
-export MYSQL_HOME=/usr/local/mysql
-export PATH=$PATH:$MYSQL_HOME/bin
+# export MYSQL_HOME=$opt_home/mysql
+# export PATH=$PATH:$MYSQL_HOME/bin
 
 # Oracle
-export PATH=$PATH:/usr/local/instantclient_12_1
+# export PATH=$PATH:$opt_home/instantclient_12_1
 
 # phantomjs
-export PATH=$PATH:/usr/local/phantomjs-2.1.1/bin
+# export PATH=$PATH:$opt_home/phantomjs-2.1.1/bin
 
 # NodeJS
-export PATH=$PATH:/usr/local/nodejs/bin
+# export PATH=$PATH:$opt_home/nodejs/bin
 
 # Hadoop
-export HADOOP_HOME=/usr/local/hadoop
-export PATH=$PATH:$HADOOP_HOME/bin
+# export HADOOP_HOME=$opt_home/hadoop
+# export PATH=$PATH:$HADOOP_HOME/bin
 
 # flutter
-export FLUTTER_HOME=/usr/local/flutter
-export PATH=$PATH:$FLUTTER_HOME/bin
+# export FLUTTER_HOME=$opt_home/flutter
+# export PATH=$PATH:$FLUTTER_HOME/bin
 
 # RabbitMQ
-export RABBITMQ_HOME=/usr/local/rabbitmq
-export PATH=$PATH:$RABBITMQ_HOME/bin:$RABBITMQ_HOME/sbin
+# export RABBITMQ_HOME=$opt_home/rabbitmq
+# export PATH=$PATH:$RABBITMQ_HOME/bin:$RABBITMQ_HOME/sbin
 
 # Kafka
-export KAFKA_HOME=/usr/local/kafka
-export PATH=$PATH:$KAFKA_HOME/bin
+# export KAFKA_HOME=$opt_home/kafka
+# export PATH=$PATH:$KAFKA_HOME/bin
 
 # ZooKeeper
-export ZOOKEEPER_HOME=/usr/local/zookeeper
-export PATH=$PATH:$ZOOKEEPER_HOME/bin
+# export ZOOKEEPER_HOME=$opt_home/zookeeper
+# export PATH=$PATH:$ZOOKEEPER_HOME/bin
 
 # Flink
-export FLINK_HOME=/opt/flink
-export PATH=$PATH:$FLINK_HOME/bin
+# export FLINK_HOME=$opt_home/flink
+# export PATH=$PATH:$FLINK_HOME/bin
