@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# 切换为镜像库
+mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup
+wget http://mirrors.aliyun.com/repo/Centos-7.repo -O /etc/yum.repos.d/CentOS-Base.repo
+
 # 增加一个好的仓库
 # Software Collections -> https://www.softwarecollections.org/en/
 sudo yum install centos-release-scl
