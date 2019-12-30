@@ -57,3 +57,6 @@ tar zxvf rarlinux-3.8.0.tar.gz
 cd rar
 make
 make install
+
+############################ 命令行读md ################################
+wget -o /usr/bin/mdr https://github.com/MichaelMure/mdr/releases/download/v0.2.0/mdr_linux_amd64
