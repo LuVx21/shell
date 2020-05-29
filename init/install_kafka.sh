@@ -1,6 +1,12 @@
 #!/bin/bash
 
-wget http://mirrors.tuna.tsinghua.edu.cn/apache/kafka/2.2.0/kafka_2.12-2.2.0.tgz
-sudo tar -zxvf kafka_2.12-2.2.0.tgz -C /usr/local/
-sudo mv /usr/local/kafka_2.12-2.2.0 /usr/local/kafka
+version=2.2.2
+url=http://mirrors.tuna.tsinghua.edu.cn/apache/kafka/$version/kafka_2.12-$version.tgz
+filename=kafka_2.12-$version.tgz
+sudo wget -c $url -O $filename
 
+sudo mkdir -p /opt/install
+sudo tar -zxvf $filename -C /opt/install/
+sudo ln -s /opt/install/kafka_2.12-$version /opt/kafka
+
+sudo rm -f $filename
