@@ -4,7 +4,7 @@ sudo apt-get update
 
 # ssh
 ps -e | grep ssh
-/etc/init.d/ssh -start
+/etc/init.d/ssh start
 sudo apt-get install openssh-server
 
 # 防火墙

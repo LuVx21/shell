@@ -19,8 +19,8 @@ gcl https://github.com/zsh-users/zsh-completions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/
 
 ############################################################
 mkdir code && cd code
-git clone https://github.com/luvx21/shell.git
-cp shell/init/alias.sh shell/init/path.sh shell/init/vimrc ~
+git clone https://github.com/luvx21/shell.git --depth=1
+cp shell/init/alias.sh shell/init/path.sh shell/init/vim/vimrc ~
 cd
 mv alias.sh .alias
 mv path.sh .path
@@ -31,7 +31,7 @@ git clone https://github.com/tomasr/molokai ~/.vim/molokai
 mv ~/.vim/molokai/colors ~/.vim
 ############################################################
 ssh-keygen -t rsa -C "yeyu0926@gmail.com"
-cat ~/.ssh/id_rsa.pub >> authorized_keys
+cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 ########################### vim #################################
 升级vim8
 curl -L https://copr.fedorainfracloud.org/coprs/hnakamur/vim/repo/epel-7/hnakamur-vim-epel-7.repo -o /etc/yum.repos.d/hnakamur-vim-epel-7.repo
@@ -46,7 +46,7 @@ yum update -y vim*
 
 ########################### saferm #################################
 # curl https://raw.githubusercontent.com/lagerspetz/linux-stuff/master/scripts/saferm.sh > saferm.sh
-git clone https://github.com/lagerspetz/linux-stuff
+git clone https://github.com/lagerspetz/linux-stuff --depth=1
 sudo mv linux-stuff/scripts/saferm.sh $(dirname $(which rm))
 rm -Rf linux-stuff
 echo 'alias rm=/bin/saferm.sh' >> ~/.alias
