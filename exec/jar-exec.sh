@@ -21,7 +21,7 @@ function start()
         echo "$jarName is running..."
     else
         echo "Start $jarName success..."
-        nohup java -jar $jarName > /dev/null 2>&1 &
+        nohup java -jar $jarName --spring.profiles.active=default > /dev/null 2>&1 &
     fi
 }
 
