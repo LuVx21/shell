@@ -19,3 +19,6 @@ if [[ $# == 0 ]] || [[ "$1" == "-h" ]]; then
     help
     exit 1
 fi
+
+
+# from: https://samizdat.dev/help-message-for-shell-scripts/
