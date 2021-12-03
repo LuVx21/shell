@@ -28,7 +28,7 @@ grep 'temporary password' /var/log/mysqld.log
 ## select @@validate_password_length;
 # set password = password('root');
 ## 配置远程登录
-# grant all privileges on *.* to 'root'@'%' identified by '1121' with grant option;
+# grant all privileges on *.* to 'root'@'%' identified by 'root' with grant option;
 # flush privileges;
 
 #↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
