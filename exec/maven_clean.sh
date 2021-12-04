@@ -10,6 +10,7 @@ done
 cat 1.txt | uniq -d >2.txt
 
 for line in $(cat 2.txt); do
+  echo $line
   last=$(ls $line | tail -1)
   for file in $(ls $line); do
     # echo $file;
