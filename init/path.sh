@@ -2,10 +2,14 @@
 opt_home=/opt
 
 # Java
-export JAVA_HOME=$opt_home/java
+export JAVA_HOME=$opt_home/java/Contents/Home
 export JRE_HOME=$JAVA_HOME/jre
 export CLASSPATH=$JAVA_HOME/lib:$JRE_HOME/lib
 export PATH=$PATH:$JAVA_HOME/bin
+
+# Maven
+export M2_HOME=$opt_home/maven
+export PATH=$PATH:$M2_HOME/bin
 
 # Python
 # export PATH=$PATH:$opt_home/python3/bin
@@ -24,10 +28,6 @@ export PATH=$PATH:$JAVA_HOME/bin
 # export SPRING_HOME=$opt_home/spring-1.5.9.RELEASE
 # export SPRING=$SPRING_HOME/bin
 # export PATH=$SPRING:$PATH
-
-# Maven
-# export M2_HOME=$opt_home/maven
-# export PATH=$PATH:$M2_HOME/bin
 
 # Gradle
 # export GRADLE_HOME=$opt_home/gradle

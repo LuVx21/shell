@@ -6,7 +6,7 @@ alias e='open'
 alias q='exit'
 
 ######################################自定义######################################
-alias rm='trash -F'
+# alias rm='trash -F'
 alias rss='~/OneDrive/Code/rss/rss.sh'
 alias proxy="export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890"
 alias unproxy="unset http_proxy;unset https_proxy;unset all_proxy"
