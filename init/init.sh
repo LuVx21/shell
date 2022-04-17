@@ -10,28 +10,38 @@ su - luvx
 # MaxAuthTries 3
 
 ########################### oh-my-zsh #################################
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-gcl https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-gcl https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-gcl https://github.com/zsh-users/zsh-completions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-completions
-# 引入zsh-syntax-highlighting plugin
-# sed -i "62izsh-syntax-highlighting" .zshrc
+oh-my-zsh() {
+    sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+    gcl --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+    gcl --depth=1 https://github.com/zsh-users/zsh-autosuggestions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+    gcl --depth=1 https://github.com/zsh-users/zsh-completions.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-completions
+    # 引入zsh-syntax-highlighting plugin
+    # sed -i "62izsh-syntax-highlighting" .zshrc
+}
 
-############################################################
-mkdir code && cd code
-git clone https://github.com/luvx21/shell.git --depth=1
-cp shell/init/alias.sh shell/init/path.sh shell/init/vim/vimrc ~
-cd
-mv alias.sh .alias
-mv path.sh .path
-mv vimrc .vimrc
-echo 'source ~/.alias' >> ~/.zshrc
-echo 'source ~/.path' >> ~/.zshrc
-git clone https://github.com/tomasr/molokai ~/.vim/molokai
-mv ~/.vim/molokai/colors ~/.vim
-############################################################
-ssh-keygen -t rsa -C "yeyu0926@gmail.com"
-cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+############################ alias ################################
+init_alias() {
+    mkdir code && cd code
+    git clone https://github.com/luvx21/shell.git --depth=1
+    cp shell/init/alias.sh shell/init/path.sh shell/init/vim/vimrc ~
+    cd
+    mv alias.sh .alias
+    mv path.sh .path
+    echo 'source ~/.alias' >> ~/.zshrc
+    echo 'source ~/.path' >> ~/.zshrc
+
+    mv vimrc .vimrc
+    mkdir ~/.vim
+    git clone https://github.com/tomasr/molokai ~/.vim/molokai
+    mv ~/.vim/molokai/colors ~/.vim
+}
+############################# git ###############################
+init_git() {
+    git config --global user.name "F.LuVx"
+    git config --global user.email "yeyu0926@hotmail.com"
+    ssh-keygen -t rsa -C "yeyu0926@hotmail.com"
+    cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+}
 ########################### vim #################################
 升级vim8
 curl -L https://copr.fedorainfracloud.org/coprs/hnakamur/vim/repo/epel-7/hnakamur-vim-epel-7.repo -o /etc/yum.repos.d/hnakamur-vim-epel-7.repo
