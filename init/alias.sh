@@ -23,6 +23,7 @@ alias bak1='fun() { rsync -av --exclude="target" $1/. $1_bak;};fun'
 alias gdiff='fun() { git diff --full-index $1...$2; };fun'
 alias gdcab='git diff --cached --binary'
 alias gstaco='git add --all && git stash && git checkout $1'
+alias ggpush1='ggpull && ggpush'
 
 alias_home=$(cd `dirname $0`; pwd)
 
