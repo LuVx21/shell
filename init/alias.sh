@@ -19,6 +19,7 @@ alias bak1='fun() { rsync -av --exclude="target" $1/. $1_bak;};fun'
 
 # alias rmall='fun () { find . -type f -name $1 | xargs rm -rv {} ;};fun'
 # alias rmall='fun () { find . -type f -name $1 -delete ;};fun'
+alias mvn1='mvn -T 1C -Dmaven.test.skip=true -Dmaven.compile.fork=true --offline'
 ######################################Git######################################
 alias gdiff='fun() { git diff --full-index $1...$2; };fun'
 alias gdcab='git diff --cached --binary'
@@ -29,3 +30,4 @@ alias_home=$(cd `dirname $0`; pwd)
 
 source $alias_home/alias/docker-aliases.sh
 source $alias_home/alias/docker-aliases1.sh
+###################################### ######################################
