@@ -9,6 +9,36 @@ su - luvx
 # PermitRootLogin no
 # MaxAuthTries 3
 
+# ssh-copy-id user@host
+
+########################### user #################################
+yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel asciidoc
+yum install gcc perl-ExtUtils-MakeMaker
+yum remove git
+wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.32.0.tar.xz
+tar -xvf git-2.32.0.tar.xz
+cd git-2.32.0
+make prefix=/usr/local/git all
+make prefix=/usr/local/git install
+echo "export PATH=$PATH:/usr/local/git/bin" >> /etc/profile && source /etc/profile
+git --version
+
+
+yum install wget gcc openssl-devel -y
+wget https://curl.haxx.se/download/curl-7.67.0.tar.gz
+gunzip -c curl-7.83.0.tar.gz | tar xvf -
+cd curl-7.67.0
+./configure --with-ssl --prefix=/usr/local/curl
+make && make install
+echo "export PATH=/usr/local/curl/bin:$PATH" >> /etc/profile && source /etc/profile
+curl --version
+
+# /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+/bin/bash -c "$(curl -fsSL 'https://cdn.jsdelivr.net/gh/Mintimate/HomebrewLinux@latest/HomebrewAutoInstall-Linux.sh')"
+
+echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /etc/profile && source /etc/profile
+
+
 ########################### oh-my-zsh #################################
 oh-my-zsh() {
     sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
