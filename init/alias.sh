@@ -26,8 +26,11 @@ alias gdcab='git diff --cached --binary'
 alias gstaco='git add --all && git stash && git checkout $1'
 alias ggpush1='ggpull && ggpush'
 
-alias_home=$(cd `dirname $0`; pwd)
+alias gcbdesc='git config branch."$(git_current_branch)".description $1'
+alias gbdesc='gcf | grep "branch.*desc.*"'
 
-source $alias_home/alias/docker-aliases.sh
-source $alias_home/alias/docker-aliases1.sh
+# alias_home=$(cd `dirname $0`; pwd)
+
+# source $alias_home/alias/docker-aliases.sh
+# source $alias_home/alias/docker-aliases1.sh
 ###################################### ######################################
