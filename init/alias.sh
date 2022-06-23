@@ -10,7 +10,6 @@ alias q='exit'
 alias rss='~/OneDrive/Code/rss/rss.sh'
 alias proxy="export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890"
 alias unproxy="unset http_proxy;unset https_proxy;unset all_proxy"
-alias bak='fun() { /usr/local/opt/coreutils/libexec/gnubin/cp -rfupv $1/. $1_bak;};fun'
 alias bak1='fun() { rsync -av --exclude="target" $1/. $1_bak;};fun'
 
 # alias mysqlup='systemctl start mysqlid || service mysql start'
@@ -20,6 +19,7 @@ alias bak1='fun() { rsync -av --exclude="target" $1/. $1_bak;};fun'
 # alias rmall='fun () { find . -type f -name $1 | xargs rm -rv {} ;};fun'
 # alias rmall='fun () { find . -type f -name $1 -delete ;};fun'
 alias mvn1='mvn -T 1C -Dmaven.test.skip=true -Dmaven.compile.fork=true --offline'
+# alias bcdelete='rm /Library/Application\ Support/Beyond\ Compare/registry.dat'
 ######################################Git######################################
 alias gdiff='fun() { git diff --full-index $1...$2; };fun'
 alias gdcab='git diff --cached --binary'
