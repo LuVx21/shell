@@ -22,6 +22,7 @@ cp kernel/* ~/.local/share/jupyter/kernels/gophernotes
 cd ~/.local/share/jupyter/kernels/gophernotes
 chmod +w ./kernel.json # in case copied kernel.json has no write permission
 sed "s|gophernotes|$(go env GOPATH)/bin/gophernotes|" < kernel.json.in > kernel.json
+cd -
 
 # 插件
 # pip install jupyter_contrib_nbextensions
