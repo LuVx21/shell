@@ -18,7 +18,7 @@ alias bak1='fun() { rsync -av --exclude="target" $1/. $1_bak;};fun'
 
 # alias rmall='fun () { find . -type f -name $1 | xargs rm -rv {} ;};fun'
 # alias rmall='fun () { find . -type f -name $1 -delete ;};fun'
-alias mvn1='mvn -T 1C -Dmaven.test.skip=true -Dmaven.compile.fork=true --offline'
+alias mvn1='mvn -T 1C -Dmaven.test.skip=true -Dmaven.compile.fork=true'
 # alias bcdelete='rm /Library/Application\ Support/Beyond\ Compare/registry.dat'
 ######################################Git######################################
 alias gdiff='fun() { git diff --full-index $1...$2; };fun'

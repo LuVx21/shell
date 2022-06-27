@@ -8,8 +8,8 @@ opt_home=/opt
 # export PATH=$PATH:$JAVA_HOME/bin
 
 # Maven
-# export M2_HOME=$opt_home/maven
-# export PATH=$PATH:$M2_HOME/bin
+export M2_HOME=$opt_home/maven
+export PATH=$PATH:$M2_HOME/bin
 
 # Python
 # export PATH=$PATH:$opt_home/python3/bin
