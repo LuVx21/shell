@@ -14,7 +14,7 @@ install(){
 startup(){
     read -p "please input you password:" passwd
     export PASSWORD=$passwd
-    nohup /opt/code-server/bin/code-server --auth password --host 0.0.0.0 --port 58080 > out.file 2>&1 &
+    nohup /opt/code-server/bin/code-server --auth password --host 0.0.0.0 --port 58080 > out.log 2>&1 &
     echo -e "\r\nStarting..."
 }
 

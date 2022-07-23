@@ -4,8 +4,8 @@
 #1 获取输入参数个数，如果没有参数，直接退出
 pcount=$#
 if((pcount==0)); then
-echo no args;
-exit;
+    echo no args;
+    exit;
 fi
 
 #2 获取文件名称
