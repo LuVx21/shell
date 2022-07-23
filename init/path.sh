@@ -2,10 +2,10 @@
 opt_home=/opt
 
 # Java
-# export JAVA_HOME=$opt_home/java/Contents/Home
-# export JRE_HOME=$JAVA_HOME/jre
-# export CLASSPATH=$JAVA_HOME/lib:$JRE_HOME/lib
-# export PATH=$PATH:$JAVA_HOME/bin
+export JAVA_HOME=$opt_home/java/Contents/Home
+export JRE_HOME=$JAVA_HOME/jre
+export CLASSPATH=$JAVA_HOME/lib:$JRE_HOME/lib
+export PATH=$PATH:$JAVA_HOME/bin
 
 # Maven
 export M2_HOME=$opt_home/maven
