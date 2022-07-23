@@ -4,15 +4,15 @@ arglen=$#
 
 install(){
     version=4.5.1
-    filename=code-server-$version-linux-arm64.tar.gz
+    filename=code-server-$version-linux-amd64.tar.gz
     wget -P /opt/pkg/ \
     https://github.91chi.fun/https://github.com//coder/code-server/releases/download/v$version/$filename
     tar -zxvf $filename -C /opt/install
-    ln -s /opt/install/code-server-$version-linux-arm64 /opt/code-server
+    ln -s /opt/install/code-server-$version-linux-amd64 /opt/code-server
 }
 
 startup(){
-    read -p "Please input a filename1:" passwd
+    read -p "please input you password:" passwd
     export PASSWORD=$passwd
     nohup /opt/code-server/bin/code-server --auth password --host 0.0.0.0 --port 58080 > out.file 2>&1 &
     echo -e "\r\nStarting..."
@@ -33,6 +33,9 @@ if [ $arglen -eq 0 ]
     show_help
 else
     case "$1" in
+        "install")
+            install
+            ;;
         "start")
             startup
             ;;
