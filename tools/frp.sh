@@ -1,5 +1,7 @@
 #!/bin/bash
 
+arglen=$#
+
 version=0.44.0
 # hostPrefix=https://github.91chi.fun/https://github.com//fatedier/frp/releases/download/
 hostPrefix=https://github.com/fatedier/frp/releases/download/
@@ -8,11 +10,11 @@ install_server(){
     filename=frp_${version}_linux_amd64.tar.gz
     sudo wget -P /opt/pkg/ ${hostPrefix}v${version}/$filename
     sudo tar -zxvf $filename -C /opt/install
-    ln -s /opt/install/frp_0.44.0_linux_amd64 /opt/frp
+    ln -s /opt/install/frp_${version}_linux_amd64 /opt/frp
 }
 
 start_server(){
-    ./frps -c ./frps.ini
+    nohup /opt/frp/frps -c /opt/frp/frps.ini &
 }
 
 
@@ -24,5 +26,25 @@ install_client(){
 }
 
 start_client(){
-    ./frpc -c ./frpc.ini
+    nohup /opt/frp/frpc -c /opt/frp/frpc.ini &
 }
+
+if [ $arglen -eq 0 ]
+ then
+    echo frp
+else
+    case "$1" in
+        "install_server")
+            install_server
+            ;;
+        "start_server")
+            start_server
+            ;;
+        "install_client")
+            install_client
+            ;;
+        "start_client")
+            start_client
+            ;;
+    esac
+fi
