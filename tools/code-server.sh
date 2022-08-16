@@ -3,11 +3,12 @@
 arglen=$#
 
 install(){
-    version=4.5.1
+    version=4.5.2
     filename=code-server-$version-linux-amd64.tar.gz
     wget -P /opt/pkg/ \
     https://github.91chi.fun/https://github.com//coder/code-server/releases/download/v$version/$filename
     tar -zxvf $filename -C /opt/install
+    rm -r /opt/code-server
     ln -s /opt/install/code-server-$version-linux-amd64 /opt/code-server
 }
 
