@@ -2,14 +2,10 @@
 
 arglen=$#
 
-install(){
-    version=4.6.0
-    filename=code-server-$version-linux-amd64.tar.gz
-    wget -P /opt/pkg/ \
-    https://github.91chi.fun/https://github.com//coder/code-server/releases/download/v$version/$filename
-    tar -zxvf $filename -C /opt/install
-    rm -r /opt/code-server
-    ln -s /opt/install/code-server-$version-linux-amd64 /opt/code-server
+show_help(){
+    echo -e "\r\n\tCoder Server"
+    echo -e "\r\nUsage: sh code start|stop|restart"
+    # exit
 }
 
 startup(){
@@ -22,12 +18,19 @@ startup(){
 
 shut_down(){
     ps aux | grep code-server | grep -v grep | awk '{print $2}' | xargs kill -9
+    echo -e "\r\nShutdown..."
 }
 
-show_help(){
-    echo -e "\r\n\tCoder Server"
-    echo -e "\r\nUsage: sh code start|stop|restart"
-    # exit
+install(){
+    version=4.6.0
+    filename=code-server-$version-linux-amd64.tar.gz
+    wget -P /opt/pkg/ \
+    https://github.91chi.fun/https://github.com//coder/code-server/releases/download/v$version/$filename
+    tar -zxvf /opt/pkg/$filename -C /opt/install
+    shut_down
+    rm -r /opt/code-server
+    ln -s /opt/install/code-server-$version-linux-amd64 /opt/code-server
+    startup
 }
 
 if [ $arglen -eq 0 ]
