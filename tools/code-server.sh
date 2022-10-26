@@ -22,7 +22,7 @@ shut_down(){
 }
 
 install(){
-    version=4.6.0
+    version=4.8.0
     filename=code-server-$version-linux-amd64.tar.gz
     wget -P /opt/pkg/ \
     https://github.91chi.fun/https://github.com//coder/code-server/releases/download/v$version/$filename
