@@ -11,6 +11,11 @@ export PATH=$PATH:$JAVA_HOME/bin
 export M2_HOME=$opt_home/maven
 export PATH=$PATH:$M2_HOME/bin
 
+# GO
+export GO_HOME=$opt_home/go
+export PATH=$PATH:$GO_HOME/bin
+export PATH=$PATH:$HOME/go/bin
+
 # Python
 # export PATH=$PATH:$opt_home/python3/bin
 
