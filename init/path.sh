@@ -1,6 +1,8 @@
 
 opt_home=/opt
 
+export PATH=$PATH:$HOME/OneDrive/Code/shell/bin
+
 # Java
 export JAVA_HOME=$opt_home/java/Contents/Home
 export JRE_HOME=$JAVA_HOME/jre

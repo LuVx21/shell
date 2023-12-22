@@ -22,3 +22,4 @@ fi
 
 
 # from: https://samizdat.dev/help-message-for-shell-scripts/
+# from: https://gist.github.com/kovetskiy/a4bb510595b3a6b17bfd1bd9ac8bb4a5
