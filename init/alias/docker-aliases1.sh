@@ -1,36 +1,30 @@
 ######################################Docker######################################
-alias dk=docker
+alias dk='docker'
 alias dkcon='docker container'
+alias dkps='docker ps'
 alias dkexec='docker exec -it'
+
 alias dkimg='docker image ls --format "table {{.Repository}}\t{{.Tag}}\t{{.ID}}" | sort'
-alias dklgs='docker logs'
-alias dklgsf='docker logs -f'
+alias dklog='docker logs'
 alias dkpsa='docker ps -a --format "table {{.Names}}\t{{.Image}}\t{{.Status}}"'
 alias dkpsdead='docker ps -f status=dead -a'
 alias dkpsexited='docker ps -f status=exited -a'
 alias dkpsf='docker ps -a -f'
 alias dkrm='docker rm -f -v'
-alias dkrmdead='dkpsdead; docker rm -f $(docker ps -f status=dead -aq)'
-alias dkrmexited='dkpsexited; docker rm -f -v $(docker ps -f status=exited -aq)'
-alias dkrmi='docker rmi'
-alias dkrmidangling='docker rmi $(docker images -f dangling=true -q)'
-alias dkrmvolumes='docker volume rm $(docker volume ls -qf dangling=true)'
 alias dkrun='docker run --rm -ti'
 alias dkstp='docker stop'
 alias dkstrt='docker start'
-alias dksysprune='docker system prune'
-alias dktls1='export DOCKER_TLS_VERIFY=1; export DOCKER_CERT_PATH=$HOME/docker/.certs'
-alias dktls='export DOCKER_TLS="--tlsverify --tlskey=$HOME/docker/.certs/key.pem --tlscacert=$HOME/docker/.certs/ca.pem --tlscert=$HOME/docker/.certs/cert.pem"'
-alias dkvlm='docker volume ls'
-alias gitlabrundocker='gitlab-ci-multi-runner exec docker --docker-pull-policy "if-not-present" --docker-privileged --docker-volumes "/var/run/docker.sock:/var/run/docker.sock" --docker-volumes "$HOME/.docker:/root/.docker" --docker-volumes "$HOME/.m2:/root/.m2" --docker-volumes "$HOME/.gitlab-runner/cache:/cache" '
-function docker_ip() { docker inspect --format '{{ .NetworkSettings.IPAddress }}' $1}
 ##############################################################################
 
-
+function dkni-fn {
+    docker inspect $1 | jq '.[0].Containers.[]' | jq '.IPv4Address+"    "+.Name' | sed 's/"//g' | sort
+}
 alias dkchkhealth='docker inspect -f "{{json .State.Health}}"'
 alias dkenv='docker inspect -f "{{json .Config.Env}}"'
 alias dklabels='docker inspect -f "{{json .Config.Labels}}"'
-alias dklogpath='docker inspect --format="{{.LogPath}}"'
+alias dklogpath='docker inspect -f "{{.LogPath}}"'
 alias dkmount='docker inspect -f "{{json .Mounts}}"'
 alias dknetmode='docker inspect -f "{{json .HostConfig.NetworkMode}}"'
 alias dkst='docker inspect -f "{{json .State}}"'
+
+alias dkni=dkni-fn

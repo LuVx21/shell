@@ -99,9 +99,9 @@ function d-aws-cli-fn {
 
 alias daws=d-aws-cli-fn
 alias dc=dc-fn
-alias dcu="docker compose up -d"
-alias dcd="docker compose down"
-alias dcr=dcr-fn
+# alias dcu="docker compose up -d"
+# alias dcd="docker compose down"
+# alias dcr=dcr-fn
 alias dex=dex-fn
 alias di=di-fn
 alias dim="docker images"

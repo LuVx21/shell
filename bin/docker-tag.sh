@@ -2,6 +2,7 @@
 
 namespace=$1
 repositorie=$2
+name=$3
 
 if [[ $# -lt 1 ]] || [[ "$1" == "-h" ]]
 then
@@ -29,7 +30,8 @@ fi
 #     exit 1
 # fi
 
-tags=`curl -L -s "https://hub.docker.com/v2/namespaces/$namespace/repositories/$repositorie/tags?page=1&page_size=50" | jq '.results[]["name"]' | sed 's/\"//g' | sort -u`
+# https://hub.docker.com/v2/repositories/redislabs/redisearch/tags/?page_size=25&page=2&name=2&ordering
+tags=`curl -L -s "https://hub.docker.com/v2/namespaces/$namespace/repositories/$repositorie/tags?page=1&page_size=100&name=$name" | jq '.results[]["name"]' | sed 's/\"//g' | sort -u`
 
 if [ -n "$3" ]
 then
