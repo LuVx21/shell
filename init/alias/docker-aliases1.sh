@@ -1,8 +1,7 @@
 ######################################Docker######################################
 alias dk='docker'
-alias dkcon='docker container'
-alias dkps='docker ps'
-alias dkexec='docker exec -it'
+alias dcon='docker container'
+alias dexec='docker exec -it'
 
 alias dkimg='docker image ls --format "table {{.Repository}}\t{{.Tag}}\t{{.ID}}" | sort'
 alias dklog='docker logs'

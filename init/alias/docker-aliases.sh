@@ -85,9 +85,9 @@ function dlab {
        docker ps --filter="label=$1" --format="{{.ID}}"
 }
 
-function dc-fn {
-        docker compose $*
-}
+# function dc-fn {
+#         docker compose $*
+# }
 
 function d-aws-cli-fn {
     docker run \
@@ -98,7 +98,7 @@ function d-aws-cli-fn {
 }
 
 alias daws=d-aws-cli-fn
-alias dc=dc-fn
+# alias dc=dc-fn
 # alias dcu="docker compose up -d"
 # alias dcd="docker compose down"
 # alias dcr=dcr-fn
