@@ -18,6 +18,11 @@ export GO_HOME=$opt_home/go
 export PATH=$PATH:$GO_HOME/bin
 export PATH=$PATH:$HOME/go/bin
 
+# Rust
+export RUSTUP_HOME=$HOME/.rustup
+export CARGO_HOME=$HOME/.cargo
+export PATH=$PATH:$CARGO_HOME/bin
+
 # Python
 # export PATH=$PATH:$opt_home/python3/bin
 
