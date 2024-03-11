@@ -6,5 +6,7 @@ function daily-fn {
 
     echo "brew download clean"
     brew cleanup
-    rm -fr $HOME/Library/Caches/Homebrew/downloads/*
+    rm -r $HOME/Library/Caches/Homebrew/downloads/*
+
+    rm -r $HOME/Library/Application\ Support/Caches/*
 }
