@@ -6,7 +6,20 @@ function daily-fn {
 
     echo "brew download clean"
     brew cleanup
-    rm -r $HOME/Library/Caches/Homebrew/downloads/*
 
+    echo "go clean..."
+    go clean -cache
+    go clean -fuzzcache
+
+    echo "delete......"
     rm -r $HOME/Library/Application\ Support/Caches/*
+
+    rm -r $HOME/Library/Caches/Homebrew/downloads/*
+    rm -r $HOME/Library/Caches/JetBrains/*
+
+    rm -r $HOME/Library/Logs/JetBrains/*
+
+    rm $HOME/Library/Application\ Support/Beyond\ Compare/registry.dat
+
+    omz update
 }
