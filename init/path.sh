@@ -1,3 +1,4 @@
+HOMEBREW_NO_AUTO_UPDATE=1
 
 opt_home=/opt
 
@@ -10,8 +11,8 @@ export CLASSPATH=$JAVA_HOME/lib:$JRE_HOME/lib
 export PATH=$PATH:$JAVA_HOME/bin
 
 # Maven
-export M2_HOME=$opt_home/maven
-export PATH=$PATH:$M2_HOME/bin
+export M2_HOME=$opt_home/mvnd
+export PATH=$PATH:$M2_HOME/bin:$M2_HOME/mvn/bin
 
 # GO
 export GO_HOME=$opt_home/go

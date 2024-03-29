@@ -1,7 +1,7 @@
 repository_name=coding-parent
-mkdir -p ./$repository_name/git/
+mkdir -p ./$repository_name/.git/
 
-cat > ./$repository_name/git/config <<- EOF
+cat > ./$repository_name/.git/config <<- EOF
 [user]
     email = yeyu0926@hotmail.com
     name = F.LuVx
