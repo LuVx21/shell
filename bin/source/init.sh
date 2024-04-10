@@ -1,6 +1,7 @@
 source_home=$(cd `dirname $0`; pwd)
+# echo "source $source_home/init.sh" > ~/.zshrc
 
-# source $source_home/path.sh
+source $source_home/path.sh
 
 source $source_home/alias.sh
 source $source_home/docker-aliases.sh

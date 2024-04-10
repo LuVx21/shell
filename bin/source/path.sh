@@ -20,9 +20,9 @@ export PATH=$PATH:$GO_HOME/bin
 export PATH=$PATH:$HOME/go/bin
 
 # Rust
-export RUSTUP_HOME=$HOME/.rustup
-export CARGO_HOME=$HOME/.cargo
-export PATH=$PATH:$CARGO_HOME/bin
+# export RUSTUP_HOME=$HOME/.rustup
+# export CARGO_HOME=$HOME/.cargo
+# export PATH=$PATH:$CARGO_HOME/bin
 
 # Python
 # export PATH=$PATH:$opt_home/python3/bin
