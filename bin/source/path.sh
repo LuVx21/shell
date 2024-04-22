@@ -18,6 +18,12 @@ export PATH=$PATH:$M2_HOME/bin:$M2_HOME/mvn/bin
 export GO_HOME=$opt_home/go
 export PATH=$PATH:$GO_HOME/bin
 export PATH=$PATH:$HOME/go/bin
+export GO111MODULE=on
+# export GONOSUMDB=*
+# export GOPROXY=https://goproxy.io,direct
+export GOPROXY=https://goproxy.cn,direct
+# export GOPROXY=https://repo.huaweicloud.com/repository/goproxy/
+# export GOPROXY=https://mirrors.aliyun.com/goproxy/
 
 # Rust
 # export RUSTUP_HOME=$HOME/.rustup
