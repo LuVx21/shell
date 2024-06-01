@@ -1,5 +1,7 @@
 HOMEBREW_NO_AUTO_UPDATE=1
-
+DK_R_A_HZ=registry.cn-hangzhou.aliyuncs.com
+DK_R_A_SH=registry.cn-shanghai.aliyuncs.com
+DK_R_T_GZ=ccr.ccs.tencentyun.com
 opt_home=/opt
 
 export PATH=$PATH:$HOME/OneDrive/Code/shell/bin

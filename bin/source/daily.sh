@@ -31,4 +31,7 @@ function daily-clean() {
     rm -r $HOME/Library/Logs/JetBrains/*
 
     # rm $HOME/Library/Application\ Support/Beyond\ Compare/registry.dat
+    echo "docker......"
+    docker builder prune
+    docker image prune
 }
