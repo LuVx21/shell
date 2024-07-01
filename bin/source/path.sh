@@ -12,6 +12,9 @@ export JRE_HOME=$JAVA_HOME/jre
 export CLASSPATH=$JAVA_HOME/lib:$JRE_HOME/lib
 export PATH=$PATH:$JAVA_HOME/bin
 
+export KOTLIN_HOME=/Applications/IntelliJ\ IDEA.app/Contents/plugins/Kotlin/kotlinc
+export PATH=$PATH:$KOTLIN_HOME/bin
+
 # Maven
 export M2_HOME=$opt_home/mvnd
 export PATH=$PATH:$M2_HOME/bin:$M2_HOME/mvn/bin

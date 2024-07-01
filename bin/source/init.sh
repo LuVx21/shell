@@ -11,3 +11,4 @@ source $source_home/daily.sh
 source $source_home/mvns.sh
 
 source $source_home/docker-cmd.sh
+source $source_home/tool.sh
