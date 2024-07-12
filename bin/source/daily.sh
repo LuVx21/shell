@@ -5,6 +5,7 @@ function daily-fn {
     cp $HOME/Library/Application\ Support/Microsoft\ Edge\ Dev/Default/Cookies $HOME/data/sqlite
 
     echo "delete......"
+    rm $HOME/Library/Application\ Support/Beyond\ Compare*/registry.dat
     rm ~/docker/freshrss/data/cache/*.spc
 
     echo "brew....."
@@ -30,7 +31,6 @@ function daily-clean() {
 
     rm -r $HOME/Library/Logs/JetBrains/*
 
-    # rm $HOME/Library/Application\ Support/Beyond\ Compare/registry.dat
     echo "docker......"
     docker builder prune
     docker image prune

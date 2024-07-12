@@ -1,6 +1,6 @@
 ---
 title: shell
-date: 
+date:
 tags:
 - Linux
 - shell
@@ -12,3 +12,7 @@ tags:
 
 
 <!-- /TOC -->
+
+# 安全rm
+
+`wget https://raw.githubusercontent.com/qqAys/trash.sh/main/trash.sh -O ~/trash.sh`
