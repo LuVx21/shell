@@ -13,3 +13,4 @@ source $source_home/mvns.sh
 
 source $source_home/docker-cmd.sh
 source $source_home/tool.sh
+source $source_home/zsh.sh
