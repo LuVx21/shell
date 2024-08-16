@@ -17,7 +17,7 @@ elif [ "$1" = "java" ];then
     rm /opt/$1 && ln -s $target /opt/$1
     exit 0
 elif [ "$1" = "go" ];then
-    version=1.22.4
+    version=1.23.0
     file=go$version.darwin-arm64.tar.gz
     target=$install/go
     url=https://go.dev/dl/$file
