@@ -22,8 +22,11 @@ function daily-clean() {
     echo "go clean..."
     go clean -cache
     go clean -fuzzcache
+    go clean -modcache
 
     echo "delete......"
+    rm -r $HOME/Library/Caches/go-build
+    rm -r $HOME/Library/Caches/JetBrains
     rm -r $HOME/Library/Application\ Support/Caches/*
     rm -r $HOME/Library/Application\ Support/apifox/{logs,Cache}
 
