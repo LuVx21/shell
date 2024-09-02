@@ -1,3 +1,39 @@
+function dockers() {
+
+    if [ "$1" = "" ];
+    then
+        echo -e "需指定操作"
+        # exit 1
+    elif [ "$1" = "update" ];then
+        docker images | tail +2 | grep -v luvx | awk '{print $1,$2}' | sed 's/ /:/g' | xargs -I F docker pull F
+        # images=`docker container ls -a | tail +2 | grep -v luvx | awk '{print $2}' | sort | uniq`
+        # for image in $images; do
+        #     echo '更新...'$image
+        #     docker pull $image
+        # done
+        # exit 0
+    elif [ "$1" = "backup" ];then
+        if [ "$2" = "" ];then
+            echo -e "需指定镜像Id"
+            # exit 1
+        fi
+        image=`docker images | grep $2 | awk '{print $1}' | sed 's/\//_/g'`
+        version=`docker images | grep $2 | awk '{print $2}'`
+
+        for registry in 'registry.cn-shanghai.aliyuncs.com' 'ccr.ccs.tencentyun.com'; do
+            nimage=$registry/luvx21/$image
+            echo '备份为->'$nimage:$version
+            docker tag $2 $nimage:$version
+            docker push $nimage:$version && docker image rm $nimage:$version
+        done
+        # exit 0
+    else
+        echo -e "无指定操作"
+        # exit 1
+    fi
+}
+
+
 function docker-tag() {
 
     namespace=$1
