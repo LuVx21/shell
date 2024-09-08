@@ -12,13 +12,20 @@ function dockers() {
         #     docker pull $image
         # done
         # exit 0
+    elif [ "$1" = "sync" ];then
     elif [ "$1" = "backup" ];then
         if [ "$2" = "" ];then
             echo -e "需指定镜像Id"
             # exit 1
         fi
-        image=`docker images | grep $2 | awk '{print $1}' | sed 's/\//_/g'`
-        version=`docker images | grep $2 | awk '{print $2}'`
+        image=`docker images | grep $2 -m 1 | awk '{print $1}' | sed 's/\//_/g'`
+        version=`docker images | grep $2 -m 1 | awk '{print $2}'`
+
+        # 架构
+        Architecture=`docker inspect $2 | jq -r '.[0].Architecture'`
+        if [ "$Architecture" = "amd64" ];then
+            version=$version\_amd64
+        fi
 
         for registry in 'registry.cn-shanghai.aliyuncs.com' 'ccr.ccs.tencentyun.com'; do
             nimage=$registry/luvx21/$image
@@ -75,4 +82,9 @@ HELP
 
     echo "${tags}"
 
+}
+
+# 镜像架构
+function dk_arch {
+    docker inspect $1 | jq -r '.[0].Architecture'
 }

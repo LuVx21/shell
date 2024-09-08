@@ -1,8 +1,13 @@
 ######################################Docker######################################
 alias dk='docker'
+alias dkb='docker build'
+alias dkc='docker container'
+alias dki='docker image'
+alias dkn='docker network'
+alias dkv='docker volume'
 alias dcon='docker container'
-alias dexec='docker exec -it'
 
+alias dexec='docker exec -it'
 alias dkimg='docker image ls --format "table {{.Repository}}\t{{.Tag}}\t{{.ID}}" | sort'
 alias dklog='docker logs'
 alias dkpsa='docker ps -a --format "table {{.Names}}\t{{.Image}}\t{{.Status}}"'
@@ -16,7 +21,7 @@ alias dkstrt='docker start'
 ##############################################################################
 
 function dkni-fn {
-    docker inspect $1 | jq '.[0].Containers.[]' | jq '.IPv4Address+"    "+.Name' | sed 's/"//g' | sort
+    docker inspect $1 | jq '.[0].Containers | .[]' | jq '.IPv4Address+"    "+.Name' | sed 's/"//g' | sort
 }
 alias dkchkhealth='docker inspect -f "{{json .State.Health}}"'
 alias dkenv='docker inspect -f "{{json .Config.Env}}"'
