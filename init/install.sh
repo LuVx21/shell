@@ -2,12 +2,30 @@
 
 install=/opt/install
 
+OS_NAME="$(uname -s)"
+case "${OS_NAME##*-}" in \
+    Linux) OS='linux'; L_OS='linux' ;; \
+    Darwin) OS='macos'; L_OS='darwin' ;; \
+    *) echo >&2 "不支持的系统: ${dpkgArch}"; exit 1 ;; \
+esac;
+
+ARCH_NAME="$(uname -m)" # 或arch
+case "${ARCH_NAME##*-}" in \
+    x86_64) ARCH='amd64'; L_ARCH='x64'; LL_ARCH='amd64' ;; \
+    arm64) ARCH='arm64'; L_ARCH='aarch64'; LL_ARCH='aarch64' ;; \
+    *) echo >&2 "不支持的架构: ${dpkgArch}"; exit 1 ;; \
+esac;
+echo "----------------------------------------------------------------"
+echo "$OS_NAME -> $OS $L_OS"
+echo "$ARCH_NAME -> $ARCH $L_ARCH $LL_ARCH"
+echo "----------------------------------------------------------------"
+
 if [ "$1" = "" ];then
     echo -e "需指定模块名"
     exit 1
 elif [ "$1" = "java" ];then
     version=23
-    file=jdk-${version}_macos-aarch64_bin.tar.gz
+    file=jdk-${version}_macos-${L_ARCH}_bin.tar.gz
     target=$install/jdk$version
     url=https://download.oracle.com/java/$version/latest/$file
     # https://download.oracle.com/graalvm/$version/latest/graalvm-$file
@@ -17,8 +35,9 @@ elif [ "$1" = "java" ];then
     rm /opt/$1 && ln -s $target /opt/$1
     exit 0
 elif [ "$1" = "go" ];then
-    version=1.23.1
-    file=go$version.darwin-arm64.tar.gz
+    [[ -n $2 ]] && version=$2 || version="1.23.4"
+    echo "安装go: $version";
+    file=go$version.darwin-${ARCH}.tar.gz
     target=$install/go
     url=https://go.dev/dl/$file
     wget $url -P $install
@@ -28,14 +47,14 @@ elif [ "$1" = "go" ];then
     go env -w GOPROXY=https://goproxy.cn,direct
     exit 0
 elif [ "$1" = "frp" ];then
-    version=0.58.1
-    file=frp_${version}_darwin_arm64.tar.gz
+    version=0.61.0
+    file=frp_${version}_darwin_${ARCH}.tar.gz
     url=https://github.com/fatedier/frp/releases/download/v$version/$file
     echo $url
     exit 0
 elif [ "$1" = "mvnd" ];then
     version=1.0.2
-    file=maven-mvnd-$version-darwin-aarch64.tar.gz
+    file=maven-mvnd-$version-darwin-${LL_ARCH}.tar.gz
     target=$install/mvnd
     url=https://github.com/apache/maven-mvnd/releases/download/$version/$file
     wget $url -P $install

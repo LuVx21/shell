@@ -2,8 +2,12 @@
 alias dk='docker'
 alias dkb='docker build'
 alias dkc='docker container'
+alias dke='docker exec -it'
 alias dki='docker image'
+alias dkl='docker logs'
+alias dkm='docker manifest'
 alias dkn='docker network'
+alias dks='docker system'
 alias dkv='docker volume'
 alias dcon='docker container'
 

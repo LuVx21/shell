@@ -14,3 +14,7 @@ source $source_home/mvns.sh
 source $source_home/docker-cmd.sh
 source $source_home/tool.sh
 source $source_home/zsh.sh
+
+if [ -f "$source_home/secrets.sh" ]; then
+  source $source_home/secrets.sh
+fi

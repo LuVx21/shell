@@ -11,6 +11,7 @@ alias rss='~/OneDrive/Code/rss/rss.sh'
 alias proxy="export https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890"
 proxy
 alias unproxy="unset http_proxy;unset https_proxy;unset all_proxy"
+alias proxy_status="echo $http_proxy $https_proxy;curl cip.cc;curl ip.im/info"
 alias bak1='fun() { rsync -av --exclude="target" $1/. $1_bak;};fun'
 
 # alias mysqlup='systemctl start mysqlid || service mysql start'

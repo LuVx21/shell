@@ -1,3 +1,19 @@
+function docker-login() {
+    if ! [ -z "$DOCKER_REGISTRY_PASSWORD" ]; then
+        echo $DOCKER_REGISTRY_PASSWORD | docker login -u $DOCKER_REGISTRY_USER --password-stdin
+    fi
+    if ! [ -z "$ALIYUN_REGISTRY_PASSWORD" ]; then
+        echo -e "登录阿里云容器服务"
+        echo $ALIYUN_REGISTRY_PASSWORD | docker login -u $ALIYUN_REGISTRY_USER $ALIYUN_REGISTRY --password-stdin
+        echo -e "登录腾讯云容器服务"
+        echo $ALIYUN_REGISTRY_PASSWORD | docker login -u $TXYUN_REGISTRY_USER $TXYUN_REGISTRY --password-stdin
+    fi
+    if ! [ -z "$GHCR_REGISTRY_PASSWORD" ]; then
+        echo -e "登录Github容器服务"
+        echo $GHCR_REGISTRY_PASSWORD | docker login -u $GHCR_REGISTRY_USER ghcr.io --password-stdin
+    fi
+}
+
 function dockers() {
 
     if [ "$1" = "" ];
@@ -5,7 +21,7 @@ function dockers() {
         echo -e "需指定操作"
         # exit 1
     elif [ "$1" = "update" ];then
-        docker images | tail +2 | grep -v luvx | awk '{print $1,$2}' | sed 's/ /:/g' | xargs -I F docker pull F
+        docker images | tail +2 | grep -v luvx | grep -v none | awk '{print $1,$2}' | sed 's/ /:/g' | sort | uniq | xargs -I F docker pull F
         # images=`docker container ls -a | tail +2 | grep -v luvx | awk '{print $2}' | sort | uniq`
         # for image in $images; do
         #     echo '更新...'$image
@@ -22,12 +38,10 @@ function dockers() {
         version=`docker images | grep $2 -m 1 | awk '{print $2}'`
 
         # 架构
-        Architecture=`docker inspect $2 | jq -r '.[0].Architecture'`
-        if [ "$Architecture" = "amd64" ];then
-            version=$version\_amd64
-        fi
+        Architecture=`docker inspect $2 | jq -r '.[0].Os + "_" + .[0].Architecture'`
+        version=$version\_$Architecture
 
-        for registry in 'registry.cn-shanghai.aliyuncs.com' 'ccr.ccs.tencentyun.com'; do
+        for registry in 'ccr.ccs.tencentyun.com' 'registry.cn-shanghai.aliyuncs.com'; do
             nimage=$registry/luvx21/$image
             echo '备份为->'$nimage:$version
             docker tag $2 $nimage:$version
