@@ -28,21 +28,30 @@ function dockers() {
         #     docker pull $image
         # done
         # exit 0
-    elif [ "$1" = "sync" ];then
+    elif [ "$1" = "manifest" ];then
+        local source_image=$2 target_image=$3
+        local tag=$(echo $source_image | awk -F':' '{if (NF==2) print $2; else print "latest"}')
+        local ps=""
+        for p in 'linux/amd64' 'linux/arm64'; do
+            local temp_tag="${tag}_${p//\//_}"
+            ps+="$target_image:$temp_tag "
+            echo "docker pull --platform=$p $source_image && docker tag $source_image $target_image:$temp_tag && docker push $target_image:$temp_tag"
+        done
+        echo "docker manifest create $target_image:$tag $ps && docker manifest push $target_image:$tag && docker manifest rm $target_image:$tag"
     elif [ "$1" = "backup" ];then
         if [ "$2" = "" ];then
             echo -e "需指定镜像Id"
             # exit 1
         fi
-        image=`docker images | grep $2 -m 1 | awk '{print $1}' | sed 's/\//_/g'`
-        version=`docker images | grep $2 -m 1 | awk '{print $2}'`
+        local image=`docker images | grep $2 -m 1 | awk '{print $1}' | sed 's/\//_/g'`
+        local version=`docker images | grep $2 -m 1 | awk '{print $2}'`
 
         # 架构
-        Architecture=`docker inspect $2 | jq -r '.[0].Os + "_" + .[0].Architecture'`
+        local Architecture=`docker inspect $2 | jq -r '.[0].Os + "_" + .[0].Architecture'`
         version=$version\_$Architecture
 
-        for registry in 'ccr.ccs.tencentyun.com' 'registry.cn-shanghai.aliyuncs.com'; do
-            nimage=$registry/luvx21/$image
+        for registry in $TXYUN_REGISTRY $ALIYUN_REGISTRY; do
+            local nimage=$registry/luvx21/$image
             echo '备份为->'$nimage:$version
             docker tag $2 $nimage:$version
             docker push $nimage:$version && docker image rm $nimage:$version
@@ -57,9 +66,9 @@ function dockers() {
 
 function docker-tag() {
 
-    namespace=$1
-    repositorie=$2
-    name=$3
+    local namespace=$1
+    local repositorie=$2
+    local name=$3
 
     if [[ $# -lt 1 ]] || [[ "$1" == "-h" ]]; then
         cat << HELP
@@ -87,7 +96,7 @@ HELP
     # fi
 
     # https://hub.docker.com/v2/repositories/redislabs/redisearch/tags/?page_size=25&page=2&name=2&ordering
-    tags=`curl -L -s "https://hub.docker.com/v2/namespaces/$namespace/repositories/$repositorie/tags?page=1&page_size=100&name=$name" | jq '.results[]["name"]' | sed 's/\"//g' | sort -u`
+    local tags=`curl -L -s "https://hub.docker.com/v2/namespaces/$namespace/repositories/$repositorie/tags?page=1&page_size=100&name=$name" | jq '.results[]["name"]' | sed 's/\"//g' | sort -u`
 
     if [ -n "$3" ]
     then
