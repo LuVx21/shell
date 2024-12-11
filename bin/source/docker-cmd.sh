@@ -21,7 +21,10 @@ function dockers() {
         echo -e "需指定操作"
         # exit 1
     elif [ "$1" = "update" ];then
-        docker images | tail +2 | grep -v luvx | grep -v none | awk '{print $1,$2}' | sed 's/ /:/g' | sort | uniq | xargs -I F docker pull F
+        # docker images | tail +2 | grep -v luvx | grep -v none | awk '{print $1,$2}' | sed 's/ /:/g' | sort | uniq | xargs -I F docker pull F
+        docker images | tail +2 | grep -v luvx | grep -v none | awk '{print $1,$2}' | sed 's/ /:/g' | sort | uniq | xargs -I F docker inspect --format='docker pull --platform={{.Os}}/{{.Architecture}} F' F | xargs -I F sh -c "F"
+        # docker image ls --format "table {{.Repository}}:{{.Tag}}" | tail +2 | grep -v luvx | grep -v none | sort | uniq | xargs -I F docker inspect --format='docker pull --platform={{.Os}}/{{.Architecture}} F' F | xargs -I F sh -c "F"
+
         # images=`docker container ls -a | tail +2 | grep -v luvx | awk '{print $2}' | sort | uniq`
         # for image in $images; do
         #     echo '更新...'$image
