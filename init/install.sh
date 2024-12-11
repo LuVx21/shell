@@ -12,7 +12,7 @@ esac;
 ARCH_NAME="$(uname -m)" # 或arch
 case "${ARCH_NAME##*-}" in \
     x86_64) ARCH='amd64'; L_ARCH='x64'; LL_ARCH='amd64' ;; \
-    arm64) ARCH='arm64'; L_ARCH='aarch64'; LL_ARCH='aarch64' ;; \
+    arm64|aarch64) ARCH='arm64'; L_ARCH='aarch64'; LL_ARCH='aarch64' ;; \
     *) echo >&2 "不支持的架构: ${ARCH_NAME}"; exit 1 ;; \
 esac;
 echo "----------------------------------------------------------------"

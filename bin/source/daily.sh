@@ -13,7 +13,7 @@ function daily-fn {
 
     echo "brew clean"
     brew cleanup && brew autoremove
-    rm -r $HOME/Library/Caches/Homebrew/downloads/*
+    rm -fr $HOME/Library/Caches/Homebrew/downloads/*
 
     omz update &
 }

@@ -2,15 +2,15 @@ function docker-login() {
     if ! [ -z "$DOCKER_REGISTRY_PASSWORD" ]; then
         echo $DOCKER_REGISTRY_PASSWORD | docker login -u $DOCKER_REGISTRY_USER --password-stdin
     fi
-    if ! [ -z "$ALIYUN_REGISTRY_PASSWORD" ]; then
+    if ! [ -z "$ALIYUN_CR_PASSWORD" ]; then
         echo -e "登录阿里云容器服务"
-        echo $ALIYUN_REGISTRY_PASSWORD | docker login -u $ALIYUN_REGISTRY_USER $ALIYUN_REGISTRY --password-stdin
+        echo $ALIYUN_CR_PASSWORD | docker login -u $ALIYUN_CR_USER $ALIYUN_CR --password-stdin
         echo -e "登录腾讯云容器服务"
-        echo $ALIYUN_REGISTRY_PASSWORD | docker login -u $TXYUN_REGISTRY_USER $TXYUN_REGISTRY --password-stdin
+        echo $ALIYUN_CR_PASSWORD | docker login -u $TXYUN_CR_USER $TXYUN_CR --password-stdin
     fi
-    if ! [ -z "$GHCR_REGISTRY_PASSWORD" ]; then
+    if ! [ -z "$GH_CR_PASSWORD" ]; then
         echo -e "登录Github容器服务"
-        echo $GHCR_REGISTRY_PASSWORD | docker login -u $GHCR_REGISTRY_USER ghcr.io --password-stdin
+        echo $GH_CR_PASSWORD | docker login -u $GH_CR_USER ghcr.io --password-stdin
     fi
 }
 
@@ -46,18 +46,22 @@ function dockers() {
             echo -e "需指定镜像Id"
             # exit 1
         fi
-        local image=`docker images | grep $2 -m 1 | awk '{print $1}' | sed 's/\//_/g'`
-        local version=`docker images | grep $2 -m 1 | awk '{print $2}'`
+        local input_arr=($@)
+        local slice=( "${input_arr[@]:1}" )
+        for id in ${slice[@]}; do
+            local image=`docker images | grep $id -m 1 | awk '{print $1}' | sed 's/\//_/g'`
+            local version=`docker images | grep $id -m 1 | awk '{print $2}'`
 
-        # 架构
-        local Architecture=`docker inspect $2 | jq -r '.[0].Os + "_" + .[0].Architecture'`
-        version=$version\_$Architecture
+            # 架构
+            local Architecture=`docker inspect $id | jq -r '.[0].Os + "_" + .[0].Architecture'`
+            version=$version\_$Architecture
 
-        for registry in $TXYUN_REGISTRY $ALIYUN_REGISTRY; do
-            local nimage=$registry/luvx21/$image
-            echo '备份为->'$nimage:$version
-            docker tag $2 $nimage:$version
-            docker push $nimage:$version && docker image rm $nimage:$version
+            for registry in $TXYUN_CR_NS $ALIYUN_CR_NS; do
+                local nimage=$registry/$image
+                echo '备份为->'$nimage:$version
+                docker tag $id $nimage:$version
+                docker push $nimage:$version && docker image rm $nimage:$version
+            done
         done
         # exit 0
     else
