@@ -3,11 +3,11 @@ function docker-login() {
     if ! [ -z "$DOCKER_REGISTRY_PASSWORD" ]; then
         echo $DOCKER_REGISTRY_PASSWORD | docker login -u $DOCKER_REGISTRY_USER --password-stdin
     fi
-    if ! [ -z "$ALIYUN_CR_PASSWORD" ]; then
+    if ! [ -z "$ALI_CR_PASSWORD" ]; then
         echo -e "登录阿里云容器服务"
-        echo $ALIYUN_CR_PASSWORD | docker login -u $ALIYUN_CR_USER $ALIYUN_CR --password-stdin
+        echo $ALI_CR_PASSWORD | docker login -u $ALI_CR_USER $ALI_CR --password-stdin
         echo -e "登录腾讯云容器服务"
-        echo $ALIYUN_CR_PASSWORD | docker login -u $TXYUN_CR_USER $TXYUN_CR --password-stdin
+        echo $ALI_CR_PASSWORD | docker login -u $TX_CR_USER $TX_CR --password-stdin
     fi
     if ! [ -z "$GH_CR_PASSWORD" ]; then
         echo -e "登录Github容器服务"
@@ -69,7 +69,7 @@ function dockers() {
             local Architecture=`docker inspect $id | jq -r '.[0].Os + "_" + .[0].Architecture'`
             version=$version\_$Architecture
 
-            for registry in $TXYUN_CR_NS $ALIYUN_CR_NS; do
+            for registry in $TX_CR_NS $ALI_CR_NS; do
                 local nimage=$registry/$image
                 echo '备份为->'$nimage:$version
                 docker tag $id $nimage:$version

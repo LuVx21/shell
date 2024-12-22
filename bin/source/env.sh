@@ -1,8 +1,8 @@
 export HOMEBREW_NO_AUTO_UPDATE=true
 ######################################Docker######################################
-# ALIYUN_CR_HZ=registry.cn-hangzhou.aliyuncs.com
-export ALIYUN_CR=registry.cn-shanghai.aliyuncs.com
-export TXYUN_CR=ccr.ccs.tencentyun.com
+# ALI_CR_HZ=registry.cn-hangzhou.aliyuncs.com
+export ALI_CR=registry.cn-shanghai.aliyuncs.com
+export TX_CR=ccr.ccs.tencentyun.com
 export GH_CR=ghcr.io
 export GH_CR_NJU=ghcr.nju.edu.cn
 
