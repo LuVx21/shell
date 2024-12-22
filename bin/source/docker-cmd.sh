@@ -1,3 +1,4 @@
+#!/bin/bash
 function docker-login() {
     if ! [ -z "$DOCKER_REGISTRY_PASSWORD" ]; then
         echo $DOCKER_REGISTRY_PASSWORD | docker login -u $DOCKER_REGISTRY_USER --password-stdin
@@ -16,11 +17,10 @@ function docker-login() {
 
 function dockers() {
 
-    if [ "$1" = "" ];
-    then
+    if [ "$1" = "" ]; then
         echo -e "需指定操作"
         # exit 1
-    elif [ "$1" = "update" ];then
+    elif [ "$1" = "update" ]; then
         # docker images | tail +2 | grep -v luvx | grep -v none | awk '{print $1,$2}' | sed 's/ /:/g' | sort | uniq | xargs -I F docker pull F
         docker images | tail +2 | grep -v luvx | grep -v none | awk '{print $1,$2}' | sed 's/ /:/g' | sort | uniq | xargs -I F docker inspect --format='docker pull --platform={{.Os}}/{{.Architecture}} F' F | xargs -I F sh -c "F"
         # docker image ls --format "table {{.Repository}}:{{.Tag}}" | tail +2 | grep -v luvx | grep -v none | sort | uniq | xargs -I F docker inspect --format='docker pull --platform={{.Os}}/{{.Architecture}} F' F | xargs -I F sh -c "F"
@@ -31,17 +31,30 @@ function dockers() {
         #     docker pull $image
         # done
         # exit 0
-    elif [ "$1" = "manifest" ];then
+    elif [ "$1" = "manifest" ]; then
         local source_image=$2 target_image=$3
         local tag=$(echo $source_image | awk -F':' '{if (NF==2) print $2; else print "latest"}')
         local ps=""
+        local cmd=""
         for p in 'linux/amd64' 'linux/arm64'; do
             local temp_tag="${tag}_${p//\//_}"
             ps+="$target_image:$temp_tag "
-            echo "docker pull --platform=$p $source_image && docker tag $source_image $target_image:$temp_tag && docker push $target_image:$temp_tag"
+            cmd+="echo "拉/推送镜像,架构:$p";\n docker pull --platform=$p $source_image && docker tag $source_image $target_image:$temp_tag && docker push $target_image:$temp_tag;\n"
         done
-        echo "docker manifest create $target_image:$tag $ps && docker manifest push $target_image:$tag && docker manifest rm $target_image:$tag"
-    elif [ "$1" = "backup" ];then
+        cmd+="\n echo '创建manifest...' && \
+        \n docker manifest create $target_image:$tag $ps && \
+        \n echo '推送manifest...' && \
+        \n docker manifest push $target_image:$tag && \
+        \n echo '删除manifest...' && \
+        \n docker manifest rm $target_image:$tag;
+        "
+        echo -e $cmd
+        eval $(echo -e $cmd)
+        # read -t 10 -p "请确认是否执行: " name;
+        # if [[ name -eq 'y' ]]; then
+        #     eval $cmd
+        # fi
+    elif [ "$1" = "backup" ]; then
         if [ "$2" = "" ];then
             echo -e "需指定镜像Id"
             # exit 1
