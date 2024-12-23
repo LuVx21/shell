@@ -33,7 +33,10 @@ function dockers() {
         # exit 0
     elif [ "$1" = "manifest" ]; then
         local source_image=$2 target_image=$3
-        local tag=$(echo $source_image | awk -F':' '{if (NF==2) print $2; else print "latest"}')
+        local tag=$(echo $target_image | awk -F':' '{if (NF==2) print $2; else print ""}')
+        if [ -z $tag ]; then
+            tag=$(echo $source_image | awk -F':' '{if (NF==2) print $2; else print "latest"}')
+        fi
         local ps=""
         local cmd=""
         for p in 'linux/amd64' 'linux/arm64'; do

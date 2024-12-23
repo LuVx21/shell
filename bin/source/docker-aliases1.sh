@@ -1,6 +1,6 @@
 ######################################Docker######################################
 alias dk='docker'
-alias dkb='docker build'
+alias dkb='docker build --build-arg CR=$ALI_CR_NS'
 alias dkc='docker container'
 alias dke='docker exec -it'
 alias dki='docker image'
@@ -36,3 +36,6 @@ alias dknetmode='docker inspect -f "{{json .HostConfig.NetworkMode}}"'
 alias dkst='docker inspect -f "{{json .State}}"'
 
 alias dkni=dkni-fn
+
+
+alias dkbb='docker buildx build --build-arg CR=$ALI_CR_NS'
