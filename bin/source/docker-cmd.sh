@@ -51,7 +51,7 @@ function dockers() {
         \n echo '删除manifest...' && \
         \n docker manifest rm $target_image:$tag;
         "
-        echo -e $cmd
+        # echo -e $cmd
         eval $(echo -e $cmd)
         # read -t 10 -p "请确认是否执行: " name;
         # if [[ name -eq 'y' ]]; then
