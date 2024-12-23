@@ -65,9 +65,15 @@ function dockers() {
         local input_arr=($@)
         local slice=( "${input_arr[@]:1}" )
         for id in ${slice[@]}; do
-            local image=`docker images | grep $id -m 1 | awk '{print $1}' | sed 's/\//_/g'`
+            # local image=`docker images | grep $id -m 1 | awk '{print $1}' | sed 's/\//_/g'`
+            local image=`docker images | grep $id -m 1 | awk '{print $1}'`
+            [[ $image == luvx/* ]] && image=${image#luvx/} || image=${image/\//_}
             local version=`docker images | grep $id -m 1 | awk '{print $2}'`
 
+            if [[ -z $image || -z $version ]]; then
+                echo -e "未找到镜像 $id"
+                continue
+            fi
             # 架构
             local Architecture=`docker inspect $id | jq -r '.[0].Os + "_" + .[0].Architecture'`
             version=$version\_$Architecture
