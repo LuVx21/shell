@@ -3,17 +3,17 @@
 install=/opt/install
 
 OS_NAME="$(uname -s)"
-case "${OS_NAME##*-}" in \
-    Linux) OS='linux'; L_OS='linux' ;; \
-    Darwin) OS='macos'; L_OS='darwin' ;; \
-    *) echo >&2 "不支持的系统: ${OS_NAME}"; exit 1 ;; \
+case "${OS_NAME##*-}" in
+    Linux)  OS='linux'; L_OS='linux' ;;
+    Darwin) OS='macos'; L_OS='darwin' ;;
+    *) echo >&2 "不支持的系统: ${OS_NAME}"; exit 1 ;;
 esac;
 
 ARCH_NAME="$(uname -m)" # 或arch
-case "${ARCH_NAME##*-}" in \
-    x86_64) ARCH_V0='amd64'; ARCH_V1='x64'; ARCH_V2='amd64' ;; \
-    arm64|aarch64) ARCH_V0='arm64'; ARCH_V1='aarch64'; ARCH_V2='aarch64' ;; \
-    *) echo >&2 "不支持的架构: ${ARCH_NAME}"; exit 1 ;; \
+case "${ARCH_NAME##*-}" in
+    x86_64)        ARCH_V0='amd64'; ARCH_V1='x64';     ARCH_V2='amd64' ;;
+    arm64|aarch64) ARCH_V0='arm64'; ARCH_V1='aarch64'; ARCH_V2='aarch64' ;;
+    *) echo >&2 "不支持的架构: ${ARCH_NAME}"; exit 1 ;;
 esac;
 echo "----------------------------------------------------------------"
 echo "$OS_NAME -> $OS $L_OS"

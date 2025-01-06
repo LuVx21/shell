@@ -1,4 +1,11 @@
 export HOMEBREW_NO_AUTO_UPDATE=true
+######################################Golang######################################
+export GO111MODULE=on
+# export GONOSUMDB=*
+# export GOPROXY=https://goproxy.io,direct
+export GOPROXY=https://goproxy.cn,direct
+# export GOPROXY=https://repo.huaweicloud.com/repository/goproxy/
+# export GOPROXY=https://mirrors.aliyun.com/goproxy/
 ######################################Docker######################################
 # ALI_CR_HZ=registry.cn-hangzhou.aliyuncs.com
 export ALI_CR=registry.cn-shanghai.aliyuncs.com

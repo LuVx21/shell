@@ -4,22 +4,23 @@ alias dkb='docker build --build-arg CR=$ALI_CR_NS'
 alias dkc='docker container'
 alias dke='docker exec -it'
 alias dki='docker image'
-alias dkl='docker logs'
+alias dkl='docker logs -f'
 alias dkm='docker manifest'
 alias dkn='docker network'
+alias dkr='docker run --rm -itd'
 alias dks='docker system'
 alias dkv='docker volume'
-alias dcon='docker container'
 
-alias dexec='docker exec -it'
-alias dkimg='docker image ls --format "table {{.Repository}}\t{{.Tag}}\t{{.ID}}" | sort'
-alias dklog='docker logs'
+alias dkin='docker inspect'
+alias dkps='docker ps'
+
+alias dkils='docker image ls --format "table {{.Repository}}\t{{.Tag}}\t{{.ID}}" | sort'
+
 alias dkpsa='docker ps -a --format "table {{.Names}}\t{{.Image}}\t{{.Status}}"'
 alias dkpsdead='docker ps -f status=dead -a'
 alias dkpsexited='docker ps -f status=exited -a'
 alias dkpsf='docker ps -a -f'
 alias dkrm='docker rm -f -v'
-alias dkrun='docker run --rm -itd'
 alias dkstp='docker stop'
 alias dkstrt='docker start'
 ##############################################################################
@@ -41,3 +42,16 @@ alias dkni=dkni-fn
 alias dkbb='docker buildx build --build-arg CR=$ALI_CR_NS'
 
 alias dkpull='fun() { docker pull dockerproxy.net/$1; docker tag dockerproxy.net/$1 $1; docker image rm dockerproxy.net/$1;};fun'
+
+# alias grpcui="docker run --rm -it --name grpcui fullstorydev/grpcui"
+# alias grpcurl="docker run --rm -it --name grpcurl fullstorydev/grpcurl"
+# alias litecli="docker run --rm -it --name litecli -v $(pwd):/data -w /data $ALI_CR/luvx/litecli"
+# alias mongosh="docker run --rm -it --name mongosh alpine/mongosh mongosh"
+# alias mycli="docker run --rm -it --name mycli $ALI_CR/luvx/mycli"
+alias mysql="docker run --rm -it --name mysql alpine/mysql"
+# alias pgcli="docker run --rm -it --name pgcli $ALI_CR/luvx/pgcli"
+# alias psql="docker run --rm -it --name psql alpine/psql"
+# alias sqlite="docker run --rm -it --name sqlite -v $(pwd):/data -w /data alpine/sqlite"
+# 例: usql sqlite3:./data/sqlite/main.db
+# alias usql="docker run --rm -it --name usql -v $(pwd):/data -w /data usql/usql"
+# alias octosql="docker run --rm -it --name octosql jauderho/octosql"

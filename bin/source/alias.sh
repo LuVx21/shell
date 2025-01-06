@@ -30,3 +30,7 @@ alias ggpush1='ggpull && ggpush'
 alias gcbdesc='git config branch."$(git_current_branch)".description $1'
 alias gbdesc='gcf | grep "branch.*desc.*"'
 ###################################### ######################################
+ckv() {
+    local key="$1"
+    sqlite3 $HOME/data/sqlite/main.db "select common_value from common_key_value where invalid = 0 and biz_type = 0 and common_key = '$key'"
+}

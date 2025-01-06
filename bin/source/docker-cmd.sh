@@ -51,12 +51,12 @@ function dockers() {
         \n echo '删除manifest...' && \
         \n docker manifest rm $target_image:$tag;
         "
-        # echo -e $cmd
-        eval $(echo -e $cmd)
-        # read -t 10 -p "请确认是否执行: " name;
-        # if [[ name -eq 'y' ]]; then
-        #     eval $cmd
-        # fi
+        echo -e $cmd
+        echo -n "请确认是否执行(y/n):"
+        read -t 10 y;
+        if [[ $y -eq 'y' ]]; then
+            eval $(echo -e $cmd)
+        fi
     elif [ "$1" = "backup" ]; then
         if [ "$2" = "" ];then
             echo -e "需指定镜像Id"
