@@ -39,7 +39,7 @@ function dockers() {
         fi
         local ps=""
         local cmd=""
-        for p in 'linux/amd64' 'linux/arm64'; do
+        for p in 'linux/arm64' 'linux/amd64'; do
             local temp_tag="${tag}_${p//\//_}"
             ps+="$target_image:$temp_tag "
             cmd+="echo "拉/推送镜像,架构:$p";\n docker pull --platform=$p $source_image && docker tag $source_image $target_image:$temp_tag && docker push $target_image:$temp_tag;\n"

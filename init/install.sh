@@ -20,10 +20,16 @@ echo "$OS_NAME -> $OS $L_OS"
 echo "$ARCH_NAME -> $ARCH_V0 $ARCH_V1 $ARCH_V2"
 echo "----------------------------------------------------------------"
 
-if [ "$1" = "" ];then
+Usage() {
+  echo "$0 <module_name>"
+}
+
+if [ $# -eq 0 ]; then
+# if [ "$1" = "" ]; then
     echo -e "需指定模块名"
+    Usage
     exit 1
-elif [ "$1" = "java" ];then
+elif [ "$1" = "java" ]; then
     version=23
     file=jdk-${version}_${OS}-${ARCH_V1}_bin.tar.gz
     target=$install/jdk$version
@@ -34,7 +40,7 @@ elif [ "$1" = "java" ];then
     tar -zxvf $install/$file --strip-components 2 -C $target
     rm /opt/$1 && ln -s $target /opt/$1
     exit 0
-elif [ "$1" = "go" ];then
+elif [ "$1" = "go" ]; then
     [[ -n $2 ]] && version=$2 || version="1.23.4"
     echo "安装go: $version";
     file=go${version}.${L_OS}-${ARCH_V0}.tar.gz
@@ -46,13 +52,13 @@ elif [ "$1" = "go" ];then
     sudo rm /opt/$1 && sudo ln -s $target /opt/$1
     go env -w GOPROXY=https://goproxy.cn,direct
     exit 0
-elif [ "$1" = "frp" ];then
+elif [ "$1" = "frp" ]; then
     version=0.61.0
     file=frp_${version}_${L_OS}_${ARCH_V0}.tar.gz
     url=https://github.com/fatedier/frp/releases/download/v$version/$file
     echo $url
     exit 0
-elif [ "$1" = "mvnd" ];then
+elif [ "$1" = "mvnd" ]; then
     version=1.0.2
     file=maven-mvnd-${version}-${L_OS}-${ARCH_V2}.tar.gz
     target=$install/mvnd
@@ -61,6 +67,10 @@ elif [ "$1" = "mvnd" ];then
     rm -fr $target && mkdir -p $target
     tar -zxvf $install/$file --strip-components 2 -C $target
     rm /opt/$1 && ln -s $target /opt/$1
+    exit 0
+elif [ "$1" = "jq" ]; then
+    curl -fSL https://github.com/stedolan/jq/releases/latest/download/jq-${OS}-${ARCH_V0} -o /usr/bin/jq
+    sudo chmod +x /usr/bin/jq
     exit 0
 else
     echo -e "无指定模块名"

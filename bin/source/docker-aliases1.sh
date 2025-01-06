@@ -19,7 +19,7 @@ alias dkpsdead='docker ps -f status=dead -a'
 alias dkpsexited='docker ps -f status=exited -a'
 alias dkpsf='docker ps -a -f'
 alias dkrm='docker rm -f -v'
-alias dkrun='docker run --rm -ti'
+alias dkrun='docker run --rm -itd'
 alias dkstp='docker stop'
 alias dkstrt='docker start'
 ##############################################################################
@@ -39,3 +39,5 @@ alias dkni=dkni-fn
 
 
 alias dkbb='docker buildx build --build-arg CR=$ALI_CR_NS'
+
+alias dkpull='fun() { docker pull dockerproxy.net/$1; docker tag dockerproxy.net/$1 $1; docker image rm dockerproxy.net/$1;};fun'
