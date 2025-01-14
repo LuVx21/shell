@@ -7,7 +7,8 @@ alias dki='docker image'
 alias dkl='docker logs -f'
 alias dkm='docker manifest'
 alias dkn='docker network'
-alias dkr='docker run --rm -itd'
+alias dkr='docker run --rm -it'
+alias dkrd='docker run --rm -itd'
 alias dks='docker system'
 alias dkv='docker volume'
 
@@ -45,13 +46,17 @@ alias dkpull='fun() { docker pull dockerproxy.net/$1; docker tag dockerproxy.net
 
 # alias grpcui="docker run --rm -it --name grpcui fullstorydev/grpcui"
 # alias grpcurl="docker run --rm -it --name grpcurl fullstorydev/grpcurl"
-# alias litecli="docker run --rm -it --name litecli -v $(pwd):/data -w /data $ALI_CR/luvx/litecli"
+# alias litecli="docker run --rm -it -v $(pwd):/data -w /data --name litecli $ALI_CR/luvx/litecli"
 # alias mongosh="docker run --rm -it --name mongosh alpine/mongosh mongosh"
 # alias mycli="docker run --rm -it --name mycli $ALI_CR/luvx/mycli"
 alias mysql="docker run --rm -it --name mysql alpine/mysql"
 # alias pgcli="docker run --rm -it --name pgcli $ALI_CR/luvx/pgcli"
 # alias psql="docker run --rm -it --name psql alpine/psql"
-# alias sqlite="docker run --rm -it --name sqlite -v $(pwd):/data -w /data alpine/sqlite"
+# alias sqlite="docker run --rm -it -v $(pwd):/data -w /data --name sqlite alpine/sqlite"
 # 例: usql sqlite3:./data/sqlite/main.db
-# alias usql="docker run --rm -it --name usql -v $(pwd):/data -w /data usql/usql"
+# alias usql="docker run --rm -it -v $(pwd):/data -w /data --name usql usql/usql"
 # alias octosql="docker run --rm -it --name octosql jauderho/octosql"
+# alias iredis="docker run --rm -it --name ireids $ALI_CR/luvx/ireids:alpine-latest ireids"
+# alias tl="docker run --rm -it -v $(pwd):/data -w /data --name toolong $ALI_CR/luvx/toolong:alpine-latest tl"
+# alias dolphie="docker run --rm -it --name dolphie $ALI_CR/luvx/dolphie:latest dolphie"
+# alias frogmouth="docker run --rm -it -v $(pwd):/data -w /data --name frogmouth $ALI_CR/luvx/frogmouth:alpine-latest frogmouth"

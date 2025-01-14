@@ -54,7 +54,7 @@ function dockers() {
         echo -e $cmd
         echo -n "请确认是否执行(y/n):"
         read -t 10 y;
-        if [[ $y -eq 'y' ]]; then
+        if [ $y = 'y' ]; then
             eval $(echo -e $cmd)
         fi
     elif [ "$1" = "backup" ]; then
