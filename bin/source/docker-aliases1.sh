@@ -7,8 +7,8 @@ alias dki='docker image'
 alias dkl='docker logs -f'
 alias dkm='docker manifest'
 alias dkn='docker network'
-alias dkr='docker run --rm -it'
-alias dkrd='docker run --rm -itd'
+alias dkr='docker run --rm -it --add-host="host.docker.internal:host-gateway"'
+alias dkrd='docker run --rm -itd --add-host="host.docker.internal:host-gateway"'
 alias dks='docker system'
 alias dkv='docker volume'
 
@@ -56,7 +56,7 @@ alias mysql="docker run --rm -it --name mysql alpine/mysql"
 # 例: usql sqlite3:./data/sqlite/main.db
 # alias usql="docker run --rm -it -v $(pwd):/data -w /data --name usql usql/usql"
 # alias octosql="docker run --rm -it --name octosql jauderho/octosql"
-# alias iredis="docker run --rm -it --name ireids $ALI_CR/luvx/ireids:alpine-latest ireids"
-# alias tl="docker run --rm -it -v $(pwd):/data -w /data --name toolong $ALI_CR/luvx/toolong:alpine-latest tl"
+# alias iredis="docker run --rm -it --name ireids $ALI_CR/luvx/ireids:latest-alpine ireids"
+# alias tl="docker run --rm -it -v $(pwd):/data -w /data --name toolong $ALI_CR/luvx/toolong:latest-alpine tl"
 # alias dolphie="docker run --rm -it --name dolphie $ALI_CR/luvx/dolphie:latest dolphie"
-# alias frogmouth="docker run --rm -it -v $(pwd):/data -w /data --name frogmouth $ALI_CR/luvx/frogmouth:alpine-latest frogmouth"
+# alias frogmouth="docker run --rm -it -v $(pwd):/data -w /data --name frogmouth $ALI_CR/luvx/frogmouth:latest-alpine frogmouth"

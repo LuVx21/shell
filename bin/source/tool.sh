@@ -15,13 +15,6 @@ fo() {
     [ "$key" = ctrl-o ] && open "$file" || ${EDITOR:-vim} "$file"
   fi
 }
-# cd to selected directory
-fd() {
-  local dir
-  dir=$(find ${1:-.} -path '*/\.*' -prune \
-                  -o -type d -print 2> /dev/null | fzfp +m) &&
-  cd "$dir"
-}
 #find-in-file - usage: fif <searchTerm>
 fif() {
   if [ ! "$#" -gt 0 ]; then echo "Need a string to search for!"; return 1; fi

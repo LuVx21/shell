@@ -4,13 +4,13 @@ function docker-login() {
         echo $DOCKER_REGISTRY_PASSWORD | docker login -u $DOCKER_REGISTRY_USER --password-stdin
     fi
     if ! [ -z "$ALI_CR_PASSWORD" ]; then
-        echo -e "登录阿里云容器服务"
+        echo -n "登录阿里云容器服务:"
         echo $ALI_CR_PASSWORD | docker login -u $ALI_CR_USER $ALI_CR --password-stdin
-        echo -e "登录腾讯云容器服务"
+        echo -n "登录腾讯云容器服务:"
         echo $ALI_CR_PASSWORD | docker login -u $TX_CR_USER $TX_CR --password-stdin
     fi
     if ! [ -z "$GH_CR_PASSWORD" ]; then
-        echo -e "登录Github容器服务"
+        echo -n "登录Github容器服务:"
         echo $GH_CR_PASSWORD | docker login -u $GH_CR_USER ghcr.io --password-stdin
     fi
 }
