@@ -33,23 +33,26 @@ function dockers() {
         # exit 0
     elif [ "$1" = "manifest" ]; then
         local source_image=$2 target_image=$3
-        local tag=$(echo $target_image | awk -F':' '{if (NF==2) print $2; else print ""}')
-        if [ -z $tag ]; then
-            tag=$(echo $source_image | awk -F':' '{if (NF==2) print $2; else print "latest"}')
+        local source_tag=$(echo $source_image | awk -F':' '{if (NF==2) print $2; else print "latest"}')
+        local target_tag=$(echo $target_image | awk -F':' '{if (NF==2) print $2; else print ""}')
+        if [ -z $target_tag ]; then
+            target_tag=$source_tag
         fi
         local ps=""
         local cmd=""
+        local target_image_without_tag=${target_image%:*}
         for p in 'linux/arm64' 'linux/amd64'; do
-            local temp_tag="${tag}_${p//\//_}"
-            ps+="$target_image:$temp_tag "
-            cmd+="echo "拉/推送镜像,架构:$p";\n docker pull --platform=$p $source_image && docker tag $source_image $target_image:$temp_tag && docker push $target_image:$temp_tag;\n"
+            local temp_tag="${source_tag}_${p//\//_}"
+            local new_target_image=${target_image_without_tag}:$temp_tag
+            ps+="${new_target_image} "
+            cmd+="echo "拉/推送镜像,架构:$p";\n docker pull --platform=$p $source_image && docker tag $source_image $new_target_image && docker push $new_target_image;\n"
         done
         cmd+="\n echo '创建manifest...' && \
-        \n docker manifest create $target_image:$tag $ps && \
+        \n docker manifest create $target_image_without_tag:$target_tag $ps && \
         \n echo '推送manifest...' && \
-        \n docker manifest push $target_image:$tag && \
+        \n docker manifest push $target_image_without_tag:$target_tag && \
         \n echo '删除manifest...' && \
-        \n docker manifest rm $target_image:$tag;
+        \n docker manifest rm $target_image_without_tag:$target_tag;
         "
         echo -e $cmd
         echo -n "请确认是否执行(y/n):"

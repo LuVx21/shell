@@ -41,11 +41,11 @@ elif [ "$1" = "java" ]; then
     rm /opt/$1 && ln -s $target /opt/$1
     exit 0
 elif [ "$1" = "go" ]; then
-    [[ -n $2 ]] && version=$2 || version="1.23.4"
+    [[ -n $2 ]] && version=$2 || version="1.24.0"
     echo "安装go: $version";
     file=go${version}.${L_OS}-${ARCH_V0}.tar.gz
     target=$install/go
-    url=https://go.dev/dl/$file
+    url=https://mirrors.ustc.edu.cn/golang/$file
     wget $url -P $install
     rm -fr $target && mkdir -p $target
     tar -zxvf $install/$file --strip-components 1 -C $target

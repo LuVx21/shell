@@ -1,5 +1,5 @@
 opt_home=/opt
-HOMEBREW_HOME=
+HOMEBREW_HOME=/opt/homebrew
 
 export PATH=$HOMEBREW_HOME/bin:$PATH
 

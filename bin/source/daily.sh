@@ -8,7 +8,7 @@ function daily-fn {
     rm $HOME/Library/Application\ Support/Beyond\ Compare*/registry.dat
     rm ~/docker/freshrss/data/cache/*.spc
 
-    echo "brew....."
+    echo "brew......"
     brew update && brew upgrade && brew cu -af
 
     echo "brew clean"
@@ -16,6 +16,13 @@ function daily-fn {
     rm -fr $HOME/Library/Caches/Homebrew/downloads
 
     omz update &
+
+    if [ -d "/Volumes/WD" ]; then
+        echo "rsync......"
+        rsync -arlvP $HOME/Music/Music/Media.localized/Music/ /Volumes/WD/00.Music
+        rsync -arlvP $HOME/Pictures/DCIM/ /Volumes/WD/00.相册
+        rsync -arlvP $HOME/Pictures/Picture/ /Volumes/WD/01.Picture
+    fi
 }
 
 function daily-clean() {
@@ -35,6 +42,6 @@ function daily-clean() {
     rm -r $HOME/Library/Logs/JetBrains/*
 
     echo "docker......"
-    docker builder prune
-    docker image prune
+    docker builder prune -f
+    docker image prune -f
 }
