@@ -26,14 +26,14 @@
 
 
         <!-- <key>StandardInPath</key> -->
-        <!-- <string>/Users/xxx/Downloads/testScript.log</string> -->
+        <!-- <string>/Users/xxx/data/logs/testScript.log</string> -->
 
         <!-- 标准输出文件 -->
         <key>StandardOutPath</key>
-        <string>/Users/xxx/OneDrive/Code/shell/service/run.log</string>
+        <string>/Users/xxx/data/logs/run.log</string>
 
         <!-- 标准错误输出文件，错误日志 -->
         <key>StandardErrorPath</key>
-        <string>/Users/xxx/OneDrive/Code/shell/service/run.err</string>
+        <string>/Users/xxx/data/logs/run.err</string>
     </dict>
 </plist>
