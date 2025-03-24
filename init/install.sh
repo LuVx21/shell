@@ -30,7 +30,7 @@ if [ $# -eq 0 ]; then
     Usage
     exit 1
 elif [ "$1" = "java" ]; then
-    version=23
+    version=24
     file=jdk-${version}_${OS}-${ARCH_V1}_bin.tar.gz
     target=$install/jdk$version
     url=https://download.oracle.com/java/$version/latest/$file

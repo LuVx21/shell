@@ -62,3 +62,5 @@ alias duckdb='dkr -v $(pwd):/root/data --name "duckdb_$(date +%s)" $ALI_CR/luvx/
 # alias tl='dkr -v $(pwd):/data -w /data --name toolong $ALI_CR/luvx/toolong:latest-alpine tl'
 # alias dolphie='dkr --name dolphie $ALI_CR/luvx/dolphie:latest dolphie'
 # alias frogmouth='dkr -v $(pwd):/data -w /data --name frogmouth $ALI_CR/luvx/frogmouth:latest-alpine frogmouth'
+# 检查所有更新
+alias cup='dkr -v /var/run/docker.sock:/var/run/docker.sock $GH_CR_NJU/sergi0g/cup check'
