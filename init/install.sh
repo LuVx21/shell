@@ -59,7 +59,7 @@ elif [ "$1" = "frp" ]; then
     echo $url
     exit 0
 elif [ "$1" = "mvnd" ]; then
-    version=1.0.2
+    version=1.0.3
     file=maven-mvnd-${version}-${L_OS}-${ARCH_V2}.tar.gz
     target=$install/mvnd
     url=https://github.com/apache/maven-mvnd/releases/download/$version/$file

@@ -22,6 +22,7 @@ function daily-fn {
         rsync -arlvP --exclude={'.DS_Store','*.tmp'} $HOME/Music/Music/Media.localized/Music/ /Volumes/WD/00.Music
         rsync -arlvP --exclude={'.DS_Store','*.tmp'} $HOME/Pictures/DCIM/ /Volumes/WD/00.相册
         rsync -arlvP --exclude={'.DS_Store','*.tmp'} $HOME/Pictures/Picture/ /Volumes/WD/01.Picture
+        rsync -arlvP --exclude={'.DS_Store','*.tmp'} $HOME/code/ /Volumes/WD/code
     fi
 }
 
@@ -31,13 +32,13 @@ function daily-clean() {
     go clean -fuzzcache
     go clean -modcache
 
+    pip3 cache purge
+
     echo "delete......"
     rm -r $HOME/Library/Caches/go-build
-    rm -r $HOME/Library/Caches/JetBrains
+    rm -r $HOME/Library/Caches/{JetBrains,gopls}
     rm -r $HOME/Library/Application\ Support/Caches/*
     rm -r $HOME/Library/Application\ Support/apifox/{logs,Cache}
-
-    # rm -r $HOME/Library/Caches/JetBrains/*
 
     rm -r $HOME/Library/Logs/JetBrains/*
 
