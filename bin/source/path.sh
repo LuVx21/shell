@@ -70,3 +70,4 @@ export PATH=$HOME/go/bin:$PATH
 # Flink
 # export FLINK_HOME=$opt_home/flink
 # export PATH=$FLINK_HOME/bin:$PATH
+export PATH=$HOME/data/bin:$PATH

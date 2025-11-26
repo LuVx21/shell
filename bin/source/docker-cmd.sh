@@ -121,11 +121,9 @@ HELP
         return
     fi
 
-    # if [[ -n "${namespace}" ]]; then
-    #     # echo "Search image ${repositorie} on ${repo_url}"
-    # else
-    #     exit 1
-    # fi
+    if [[ ${namespace} == "_" ]]; then
+        namespace="library"
+    fi
 
     # https://hub.docker.com/v2/repositories/redislabs/redisearch/tags/?page_size=25&page=2&name=2&ordering
     local tags=`curl -L -s "https://hub.docker.com/v2/namespaces/$namespace/repositories/$repositorie/tags?page=1&page_size=100&name=$name" | jq '.results[]["name"]' | sed 's/\"//g' | sort -u`

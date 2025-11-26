@@ -18,3 +18,10 @@ source $source_home/zsh.sh
 if [ -f "$source_home/secrets.sh" ]; then
   source $source_home/secrets.sh
 fi
+
+if [ ! -f "${HOME}/data/bin/kkv" ]; then
+  ln -s $source_home/script/kv.sh ${HOME}/data/bin/kkv
+fi
+if [ ! -f "${HOME}/data/bin/mac" ]; then
+  ln -s $source_home/script/mac.sh ${HOME}/data/bin/mac
+fi
