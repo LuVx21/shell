@@ -102,7 +102,23 @@ elif [ "$cmd" = "update" ]; then
 
     rm -fr $HOME/Library/Caches/Homebrew/downloads
 
-    omz update &
+    # omz update &
+elif [ "$cmd" = "dmg" ]; then
+    DMG_PATH=$sub_cmd
+    VOLUME_NAME=$(hdiutil attach "$DMG_PATH" | grep -o '/Volumes/.*' | cut -f 3- -d '/')
+    APP_NAME=$(find "/Volumes/$VOLUME_NAME" -name "*.app" -maxdepth 1 -exec basename {} \; | head -n 1)
+    OLD_APP_PATH="/Applications/$APP_NAME"
+    BACKUP_PATH="/Applications/${APP_NAME%.app}_old.app"
+    if [ -d "$OLD_APP_PATH" ]; then
+        echo "发现旧版本，重命名为备份..."
+        mv "$OLD_APP_PATH" "$BACKUP_PATH" 2>/dev/null || sudo mv "$OLD_APP_PATH" "$BACKUP_PATH"
+    fi
+    find "/Volumes/$VOLUME_NAME" -name "*.app" -maxdepth 1 -exec cp -R {} /Applications/ \;
+    hdiutil detach "/Volumes/$VOLUME_NAME"
+    if [ -d "$BACKUP_PATH" ]; then
+        echo "删除旧版本..."
+        rm -rf "$BACKUP_PATH" 2>/dev/null || sudo rm -rf "$BACKUP_PATH"
+    fi
 else
     echo -e "无指定操作: $sub_cmd"
 fi

@@ -25,3 +25,6 @@ export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles"
 export HOMEBREW_API_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/api"
 
 export HOMEBREW_PIP_INDEX_URL="https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple"
+
+export SERVICE_DOMAIN=$(ipconfig getifaddr $(networksetup -listallhardwareports | grep -A 1 "Wi-Fi" | tail -n 1 | awk '{print $2}')):58090
+# export IMG_REDIRECT_URL_PREFIX="https://image.baidu.com/search/down"
