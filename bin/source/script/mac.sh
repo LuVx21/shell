@@ -86,6 +86,8 @@ elif [ "$cmd" = "clean" ]; then
     rm -r $HOME/Library/Logs/OneDrive/Personal/*
     rm -r $HOME/Library/Logs/JetBrains/*
 
+    npm install -g @gitlawb/openclaude
+
     echo "docker......"
     docker builder prune -f
     docker image prune -f
@@ -119,6 +121,13 @@ elif [ "$cmd" = "dmg" ]; then
         echo "删除旧版本..."
         rm -rf "$BACKUP_PATH" 2>/dev/null || sudo rm -rf "$BACKUP_PATH"
     fi
+elif [ "$cmd" = "screen" ]; then
+    degree=$sub_cmd
+    if ! command -v displayplacer >/dev/null 2>&1; then
+        echo "brew install displayplacer"
+    fi
+    scr_id=$(displayplacer list | grep "Persistent screen id" | awk '{print $NF}')
+    displayplacer "id:$scr_id degree:$degree"
 else
     echo -e "无指定操作: $sub_cmd"
 fi
