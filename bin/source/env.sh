@@ -1,4 +1,6 @@
 export HOMEBREW_NO_AUTO_UPDATE=true
+export HOMEBREW_NO_ENV_HINTS=1
+export HOMEBREW_NO_REQUIRE_TAP_TRUST=1
 ######################################Golang######################################
 export GO111MODULE=on
 # export GONOSUMDB=*

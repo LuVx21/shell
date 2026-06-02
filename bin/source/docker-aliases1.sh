@@ -64,8 +64,8 @@ alias duckdb='dkrm -v $(pwd):/root/data --name "duckdb_$(date +%s)" $ALI_CR/luvx
 # alias dolphie='dkrm --name dolphie $ALI_CR/luvx/dolphie:latest-alpine dolphie'
 # alias frogmouth='dkrm -v $(pwd):/data -w /data --name frogmouth $ALI_CR/luvx/frogmouth:latest-alpine frogmouth'
 # 检查所有更新
-alias cup='dkrm -v /var/run/docker.sock:/var/run/docker.sock $GH_CR_NJU/sergi0g/cup check'
-alias watchtower='dkrm -v /var/run/docker.sock:/var/run/docker.sock $GH_CR_NJU/nicholas-fedor/watchtower --cleanup --run-once'
+alias cup='dkrm -e http_proxy=http://host.docker.internal:7890 -e https_proxy=http://host.docker.internal:7890 -v /var/run/docker.sock:/var/run/docker.sock $GH_CR_NJU/sergi0g/cup check'
+alias watchtower='dkrm -e http_proxy=http://host.docker.internal:7890 -e https_proxy=http://host.docker.internal:7890 -v /var/run/docker.sock:/var/run/docker.sock $GH_CR_NJU/nicholas-fedor/watchtower --cleanup --run-once'
 alias gemini='dkrm -v $HOME/.gemini/oauth_creds.json:/root/.gemini/oauth_creds.json us-docker.pkg.dev/gemini-code-dev/gemini-cli/sandbox:0.18.0'
 alias crush='dkrm -v $HOME/.config/crush/crush.json:/root/.config/crush/crush.json -e DEEPSEEK_API_KEY=$DEEPSEEK_KEY $ALI_CR/luvx/crush:latest-alpine crush'
 # alias lazydocker='dkrm -v /var/run/docker.sock:/var/run/docker.sock $ALI_CR/luvx/lazydocker:latest-alpine lazydocker'
